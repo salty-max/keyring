@@ -1,0 +1,17 @@
+## Interface: 20506
+## Title: Keyring
+## Notes: Every addon's minimap button, gathered behind one key on the minimap's ring, in a dark drawer that opens beside it.
+## Author: salty-max
+## Version: 0.1.0
+## SavedVariables: KeyringSettings
+## IconTexture: Interface\Icons\INV_Misc_Key_04
+## X-Website: https://github.com/salty-max/keyring
+## X-License: MIT
+
+# TBC Anniversary. Each game loads its own TOC (_Vanilla: Classic Era, _TBC: TBC
+# Anniversary, _Camelot: Forever), the same but for the interface
+# (scripts/package.ts checks).
+Core.lua
+Gather.lua
+Drawer.lua
+Options.lua

@@ -1,0 +1,49 @@
+# The game's globals the addon uses (selene.toml), and its own: saved
+# variables and the slash command.
+base: lua51
+name: wow
+globals:
+  C_AddOns:
+    any: true
+  C_Timer:
+    any: true
+  CreateFrame:
+    any: true
+  GameTooltip:
+    any: true
+  geterrorhandler:
+    any: true
+  GetAddOnInfo:
+    any: true
+  GetCursorPosition:
+    any: true
+  GetMouseFoci:
+    any: true
+  GetMouseFocus:
+    any: true
+  GetNumAddOns:
+    any: true
+  hooksecurefunc:
+    any: true
+  issecurevariable:
+    any: true
+  KeyringSettings:
+    any: true
+  LibStub:
+    any: true
+  Minimap:
+    any: true
+  MinimapBackdrop:
+    any: true
+  Settings:
+    any: true
+  SLASH_KEYRING1:
+    any: true
+  SlashCmdList:
+    any: true
+  strtrim:
+    any: true
+  UIParent:
+    any: true
+  UISpecialFrames:
+    any: true
