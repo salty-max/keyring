@@ -7,6 +7,8 @@
 ## IconTexture: Interface\AddOns\Keyring\Media\Logo
 ## X-Website: https://github.com/salty-max/keyring
 ## X-License: MIT
+## X-Curse-Project-ID: 1739386
+## X-Wago-ID: ANz7JV64
 
 # World of Warcraft: Forever. Each game loads its own TOC (_Vanilla: Classic Era, _TBC: TBC
 # Anniversary, _Camelot: Forever), the same but for the interface
