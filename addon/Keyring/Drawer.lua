@@ -1,5 +1,5 @@
 -- The key on the minimap's ring (the ring and highlight of the game's own
--- minimap buttons, a key from the game's icons; drag it around the minimap)
+-- minimap buttons, the project's keyring icon; drag it around the minimap)
 -- and the drawer it opens beside it: a dark tooltip's frame, the gathered
 -- buttons in a grid as square as their number allows, at the minimap's own
 -- scale. Closed by the key, by Escape, or by a click anywhere else but on a
@@ -7,7 +7,7 @@
 -- button would close its menu).
 local _, ns = ...
 
-local ICON = "Interface\\Icons\\INV_Misc_Key_04"
+local ICON = "Interface\\AddOns\\Keyring\\Media\\Logo"
 -- (inside the border; between two buttons)
 local PAD = 8
 local GAP = 2

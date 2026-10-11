@@ -10,7 +10,7 @@ game's own minimap buttons: no new style, no bar to place, nothing to set up.
 ## What it does
 
 - **One key on the minimap**, made like the game's own buttons (their ring,
-  their highlight, a key from the game's icons). Click for the drawer,
+  their highlight, a painted keyring icon). Click for the drawer,
   right-click for the settings, drag it around the minimap.
 - **A dark drawer** beside the key: the buttons in a grid as square as their
   number allows, at your minimap's own scale. A click in a menu one of them

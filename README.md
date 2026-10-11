@@ -6,7 +6,7 @@ minimap's ring, in a dark drawer that opens beside it. One key to gather them
 all, and in the darkness show them.
 
 - **One key**: a minimap button like the game's own (its ring, its highlight, a
-  key from the game's icons). Click it for the drawer, right-click for the
+  painted keyring icon). Click it for the drawer, right-click for the
   settings, drag it around the minimap.
 - **The drawer**: a dark tooltip-like frame beside the key, the buttons in a
   grid as square as their number allows, at the minimap's own scale. Escape,
