@@ -81,6 +81,7 @@ end
 eq("an overlay left", overlay:GetParent(), Minimap)
 eq("a protected one left", guarded:GetParent(), Minimap)
 eq("the key itself left", KeyringMinimapButton:GetParent(), Minimap)
+eq("the key a third larger", math.floor(KeyringMinimapButton:GetWidth() + 0.5), 40)
 eq("seven held", #ns.buttons(), 7)
 
 -- 2. The labels: the addon's title when the name is its folder's.

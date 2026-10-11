@@ -8,6 +8,9 @@
 local _, ns = ...
 
 local ICON = "Interface\\AddOns\\Keyring\\Media\\Logo"
+-- (the key a third larger than the game's buttons, all of it: the ring, the
+-- icon, its place inside the ring)
+local BIG = 1.3
 -- (inside the border; between two buttons)
 local PAD = 8
 local GAP = 2
@@ -147,7 +150,7 @@ drawer:SetScript("OnHide", function(self) self:UnregisterEvent("GLOBAL_MOUSE_DOW
 function ns.placeKey()
   if not key then return end
   local angle = math.rad(ns.settings().angle)
-  local r = Minimap:GetWidth() / 2 + 10
+  local r = Minimap:GetWidth() / 2 + 10 + 31 * (BIG - 1) / 2
   key:ClearAllPoints()
   key:SetPoint("CENTER", Minimap, "CENTER", math.cos(angle) * r, math.sin(angle) * r)
 end
@@ -173,7 +176,7 @@ function ns.createKey()
   if key then return end
   key = CreateFrame("Button", "KeyringMinimapButton", Minimap)
   ns.key = key
-  key:SetSize(31, 31)
+  key:SetSize(31 * BIG, 31 * BIG)
   key:SetFrameStrata("MEDIUM")
   key:SetFrameLevel(8)
   key:RegisterForClicks("LeftButtonUp", "RightButtonUp")
@@ -182,13 +185,13 @@ function ns.createKey()
 
   local icon = key:CreateTexture(nil, "BACKGROUND")
   icon:SetTexture(ICON)
-  icon:SetSize(20, 20)
-  icon:SetPoint("TOPLEFT", 7, -6)
+  icon:SetSize(20 * BIG, 20 * BIG)
+  icon:SetPoint("TOPLEFT", 7 * BIG, -6 * BIG)
   icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 
   local border = key:CreateTexture(nil, "OVERLAY")
   border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
-  border:SetSize(53, 53)
+  border:SetSize(53 * BIG, 53 * BIG)
   border:SetPoint("TOPLEFT")
 
   key:SetScript("OnClick", function(_, mouse)

@@ -27,8 +27,8 @@ it uses no kit, the game's own look.
     off, LibDBIcon's fade on mouse-over off; left out, all of it back as it
     was. `ns.buttons()` (label: the addon's title when the button is named
     for its folder), `ns.setLeft`, `ns.iconOf`.
-  - `Drawer.lua`: the key (the game's minimap button ring and highlight,
-    `Interface\AddOns\Keyring\Media\Logo`, dragged around the minimap) and the
+  - `Drawer.lua`: the key (the game's minimap button ring and highlight, a
+    third larger, `BIG`; the logo, `Media\Logo`; dragged around the minimap) and the
     drawer (`KeyringDrawer`, a dark tooltip backdrop, a square grid, the
     minimap's scale; beside the key away from the minimap; closed by the key,
     Escape, a click elsewhere but on a menu or tooltip: FULLSCREEN_DIALOG or
