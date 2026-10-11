@@ -1,6 +1,7 @@
 ## Interface: 16001
 ## Title: Keyring
 ## Notes: Every addon's minimap button, gathered behind one key on the minimap's ring, in a dark drawer that opens beside it.
+## Category: Map & Minimap
 ## Author: salty-max
 ## Version: 0.1.0
 ## SavedVariables: KeyringSettings
