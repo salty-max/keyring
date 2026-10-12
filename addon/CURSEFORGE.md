@@ -35,3 +35,7 @@ Warcraft: Forever, from one download.
 
 A button that is a protected frame (a secure action button) is never gathered:
 the game would not let it be moved or hidden in combat.
+
+## Support
+
+Keyring is free, and will stay free. If your minimap breathes a little easier, you can say thanks with a coffee on [Ko-fi](https://ko-fi.com/salty_max). Thank you.
