@@ -1,39 +1,57 @@
 # Keyring
 
-A World of Warcraft addon for Classic Era, TBC Anniversary and World of
-Warcraft: Forever: every addon's minimap button gathered behind one key on the
-minimap's ring, in a dark drawer that opens beside it. One key to gather them
-all, and in the darkness show them.
+Keyring collects your World of Warcraft addon minimap buttons into a drawer,
+leaving one key button on the minimap. Click it to reach your addons, then
+close it with Escape, another click on the key or a click elsewhere.
 
-- **One key**: a minimap button like the game's own (its ring, its highlight, a
-  painted keyring icon). Click it for the drawer, right-click for the
-  settings, drag it around the minimap.
-- **The drawer**: a dark tooltip-like frame beside the key, the buttons in a
-  grid as square as their number allows, at the minimap's own scale. Escape,
-  the key or a click anywhere else closes it (a click in a menu a button opened
-  doesn't).
-- **Every addon's button**: those made with LibDBIcon and the others, found on
-  the minimap by their names; never the game's own (tracking, mail, the clock,
-  the zoom, Forever's addon compartment), never a map pin. A button its addon
-  hides stays out of the drawer.
-- **Leave any out**: the settings page (Options, AddOns tab) lists every button
-  found; untick one and it goes back to its place on the minimap.
+For Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of
+Warcraft: Forever. One download covers all of them.
 
-`/keyring` opens the drawer; `/keyring settings`, `/keyring list` (the buttons,
-gathered and left out), `/keyring reset` (the key's place).
+## Using Keyring
 
-On [CurseForge](https://www.curseforge.com/projects/1739386),
-[Wago](https://addons.wago.io/addons/ANz7JV64) and
-[GitHub](https://github.com/salty-max/keyring/releases): one zip for every
-game. A sibling of Hearthtale, Lorekeeper's Codex, Explorer's Field Journal
-and Second Wind. The project page: addon/CURSEFORGE.md.
+- **Left-click** the key to open or close the drawer.
+- **Right-click** for settings.
+- **Drag** the key to move it around the minimap.
+- **Untick a button** in settings to leave it on the minimap instead.
+
+The drawer arranges buttons in a grid and follows your minimap's scale.
+Clicking a menu opened by an addon button keeps the drawer open so you can
+use it.
+
+Keyring finds buttons made with LibDBIcon and other addon buttons it
+recognises on the minimap. Tracking, mail, the clock, zoom controls,
+Forever's addon compartment and map pins stay where they are. Hidden buttons
+stay hidden. Protected buttons are left in place because the game
+restricts moving or hiding them during combat.
+
+The key uses the game's minimap ring and highlight, with a painted keyring
+icon. It works as soon as you install it.
+
+## Commands
+
+- `/keyring` opens or closes the drawer.
+- `/keyring settings` opens the button list.
+- `/keyring list` prints gathered and excluded buttons in chat.
+- `/keyring reset` returns the key to its default position.
+
+## Download
+
+Get it from [CurseForge](https://www.curseforge.com/projects/1739386),
+[Wago](https://addons.wago.io/addons/ANz7JV64) or
+[GitHub releases](https://github.com/salty-max/keyring/releases).
+
+Keyring works independently and can gather buttons from Hearthtale,
+Lorekeeper's Codex, Explorer's Field Journal, Second Wind and other addons.
+The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 
 ## Development
 
 ```bash
-bun run check        # format, lint, the simulation on both games, the TOCs
-bun run package      # dist/Keyring-<version>.zip, for a test in the game
+bun run check        # Check Lua, both game simulations and the TOCs
+bun run package      # Create dist/Keyring-<version>.zip
 scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md
 ```
 
-MIT licensed.
+## License
+
+[MIT](LICENSE). Not affiliated with Blizzard Entertainment.

@@ -1,6 +1,6 @@
 ## Interface: 20506
 ## Title: Keyring
-## Notes: Every addon's minimap button, gathered behind one key on the minimap's ring, in a dark drawer that opens beside it.
+## Notes: Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap.
 ## Category: Map & Minimap
 ## Author: salty-max
 ## Version: 0.1.0

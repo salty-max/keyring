@@ -1,41 +1,40 @@
 # Keyring
 
-**One key to gather them all, and in the darkness show them.**
+<!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
+Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap. -->
 
-Every addon's minimap button, gathered behind one key on the minimap's ring. A
-click on the key opens a dark drawer beside it with all of them in a tidy grid;
-Escape, the key or a click anywhere else closes it. Made to look like the
-game's own minimap buttons: no new style, no bar to place, nothing to set up.
+Keyring collects your addon minimap buttons into a drawer, leaving one key button on the minimap. Click it to reach your addons, then close it with Escape, another click on the key or a click elsewhere.
 
-## What it does
+## Using Keyring
 
-- **One key on the minimap**, made like the game's own buttons (their ring,
-  their highlight, a painted keyring icon). Click for the drawer,
-  right-click for the settings, drag it around the minimap.
-- **A dark drawer** beside the key: the buttons in a grid as square as their
-  number allows, at your minimap's own scale. A click in a menu one of them
-  opened leaves it open.
-- **Every addon's button**: LibDBIcon's (most addons) and the others found on
-  the minimap by their names. Never the game's own (tracking, mail, the clock,
-  the zoom), never a map pin. A button its addon hides stays out of the drawer.
-- **Leave any out**: the settings page lists every button found; untick one
-  and it goes back to its place on the minimap.
+- **Left-click** the key to open or close the drawer.
+- **Right-click** for settings.
+- **Drag** the key to move it around the minimap.
+- **Untick a button** in settings to leave it on the minimap instead.
+
+The drawer arranges buttons in a grid and follows your minimap's scale. Clicking a menu opened by an addon button keeps the drawer open so you can use it.
+
+Keyring finds buttons made with LibDBIcon, which most addons use, and other addon buttons it recognises on the minimap. Tracking, mail, the clock, zoom controls and map pins stay where they are. Buttons hidden by their own addon stay hidden.
+
+The key uses the game's minimap ring and highlight, with a painted keyring icon. It works as soon as you install it.
 
 ## Commands
 
-- `/keyring`: open or close the drawer
-- `/keyring settings`: the list of buttons
-- `/keyring list`: the buttons in chat, gathered and left out
-- `/keyring reset`: the key back to its place
+- `/keyring` opens or closes the drawer.
+- `/keyring settings` opens the button list.
+- `/keyring list` prints gathered and excluded buttons in chat.
+- `/keyring reset` returns the key to its default position.
 
-## Games
+## Compatibility
 
-Classic Era (and its Hardcore and Season realms), TBC Anniversary and World of
-Warcraft: Forever, from one download.
+One download covers Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of Warcraft: Forever.
 
-A button that is a protected frame (a secure action button) is never gathered:
-the game would not let it be moved or hidden in combat.
+Protected buttons are left in place because the game restricts moving or hiding them during combat.
 
 ## Support
 
-Keyring is free, and will stay free. If your minimap breathes a little easier, you can say thanks with a coffee on [Ko-fi](https://ko-fi.com/salty_max). Thank you.
+Keyring is free and will stay free. If it's made your minimap less crowded, you can support the addon with a coffee on [Ko-fi](https://ko-fi.com/salty_max). Thank you.
+
+## Source
+
+MIT licensed: [github.com/salty-max/keyring](https://github.com/salty-max/keyring). Not affiliated with Blizzard Entertainment.
