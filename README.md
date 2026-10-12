@@ -22,6 +22,12 @@ all, and in the darkness show them.
 `/keyring` opens the drawer; `/keyring settings`, `/keyring list` (the buttons,
 gathered and left out), `/keyring reset` (the key's place).
 
+On [CurseForge](https://www.curseforge.com/projects/1739386),
+[Wago](https://addons.wago.io/addons/ANz7JV64) and
+[GitHub](https://github.com/salty-max/keyring/releases): one zip for every
+game. A sibling of Hearthtale, Lorekeeper's Codex, Explorer's Field Journal
+and Second Wind. The project page: addon/CURSEFORGE.md.
+
 ## Development
 
 ```bash
