@@ -3,7 +3,7 @@
 ## Notes: Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap.
 ## Category: Map & Minimap
 ## Author: salty-max
-## Version: 0.1.1
+## Version: 0.1.2
 ## SavedVariables: KeyringSettings
 ## IconTexture: Interface\AddOns\Keyring\Media\Logo
 ## X-Website: https://github.com/salty-max/keyring
