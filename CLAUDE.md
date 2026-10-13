@@ -4,7 +4,7 @@ A World of Warcraft addon: every addon's minimap button gathered behind one
 key on the minimap's ring, in a dark drawer that opens beside it; a list in
 the settings to leave any out. For Classic Era, TBC Anniversary and World of
 Warcraft: Forever. A small sibling of Hearthtale, Lorekeeper's Codex,
-Explorer's Field Journal and Second Wind (same release tooling), standalone:
+Yonder and Second Wind (same release tooling), standalone:
 it uses no kit, the game's own look.
 
 ## Layout

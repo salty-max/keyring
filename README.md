@@ -41,7 +41,7 @@ Get it from [CurseForge](https://www.curseforge.com/projects/1739386),
 [GitHub releases](https://github.com/salty-max/keyring/releases).
 
 Keyring works independently and can gather buttons from Hearthtale,
-Lorekeeper's Codex, Explorer's Field Journal, Second Wind and other addons.
+Lorekeeper's Codex, Yonder, Second Wind and other addons.
 The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 
 ## Development

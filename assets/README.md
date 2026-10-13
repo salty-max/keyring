@@ -1,7 +1,7 @@
 # Project logo
 
 An original painted fantasy-item logo in the same family as Lorekeeper's Codex,
-Explorer's Field Journal, Hearthtale and Second Wind. Generated using the
+Yonder, Hearthtale and Second Wind. Generated using the
 built-in image generation tool.
 
 A heavy brass ring gathers three keys, with warm gold, turquoise and emerald

@@ -21,7 +21,7 @@ local function eq(what, got, want) check(what, got == want, ("got %s, want %s"):
 G.addons = {
   { "Hearthtale", "Hearthtale" },
   { "LorekeepersCodex", "Lorekeeper's Codex" },
-  { "FieldJournal", "Explorer's Field Journal" },
+  { "Yonder", "Yonder" },
   { "SecondWind", "Second Wind" },
   { "Questie", "|cFFFFFFFFQuestie|r" },
   { "AtlasLoot", "AtlasLoot |cFF22B14C[Core]|r" },
@@ -33,7 +33,7 @@ G.addons = {
 -- the map pins of HandyNotes, GatherMate and HereBeDragons, a minimap overlay.
 local hearthtale = G.button("HearthtaleMinimapButton", 200)
 local codex = G.button("LorekeepersCodexMinimapButton", 200)
-local journal = G.button("FieldJournalMinimapButton", 225)
+local yonder = G.button("YonderMinimapButton", 225)
 local wind = G.button("SecondWindMinimapButton", 250)
 local questie = G.DBIcon:Register("Questie", { icon = "Interface\\Icons\\INV_Misc_Book_07" }, { minimapPos = 180 })
 local atlas = G.DBIcon:Register("AtlasLoot", { icon = "Interface\\Icons\\INV_Box_01" }, {})
@@ -64,7 +64,7 @@ local gathered = {}
 for _, e in ipairs(ns.buttons()) do
   if e.held then gathered[e.name] = true end
 end
-for _, b in ipairs({ hearthtale, codex, journal, wind, questie, atlas, old }) do
+for _, b in ipairs({ hearthtale, codex, yonder, wind, questie, atlas, old }) do
   check("gathered: " .. b:GetName(), gathered[b:GetName()])
   eq(b:GetName() .. " in the drawer", b:GetParent(), drawer)
 end
@@ -91,7 +91,7 @@ for _, e in ipairs(ns.buttons()) do
 end
 eq("Hearthtale's label", labels.HearthtaleMinimapButton, "Hearthtale")
 eq("the Codex's label", labels.LorekeepersCodexMinimapButton, "Lorekeeper's Codex")
-eq("the Journal's label", labels.FieldJournalMinimapButton, "Explorer's Field Journal")
+eq("Yonder's label", labels.YonderMinimapButton, "Yonder")
 eq("Second Wind's label", labels.SecondWindMinimapButton, "Second Wind")
 eq("Questie's label (its colour off)", labels.LibDBIcon10_Questie, "Questie")
 eq("AtlasLoot's label", labels.LibDBIcon10_AtlasLoot, "AtlasLoot [Core]")
@@ -118,13 +118,13 @@ local function at(b)
   local point, rel, relPoint, x, y = b:GetPoint(1)
   return ("%s %s %s %d %d"):format(point, rel == drawer and "drawer" or tostring(rel), relPoint, x, y)
 end
--- AtlasLoot [Core], Explorer's Field Journal, Hearthtale, Lorekeeper's Codex,
--- OldAddon, Questie, Second Wind; cells of 32 + 2.
+-- AtlasLoot [Core], Hearthtale, Lorekeeper's Codex, OldAddon, Questie,
+-- Second Wind, Yonder; cells of 32 + 2.
 eq("first: AtlasLoot", at(atlas), "TOPLEFT drawer TOPLEFT 8 -8")
-eq("second: the Journal", at(journal), "TOPLEFT drawer TOPLEFT 42 -8")
-eq("third: Hearthtale", at(hearthtale), "TOPLEFT drawer TOPLEFT 76 -8")
-eq("fourth: the Codex, a new row", at(codex), "TOPLEFT drawer TOPLEFT 8 -42")
-eq("seventh: Second Wind", at(wind), "TOPLEFT drawer TOPLEFT 8 -76")
+eq("second: Hearthtale", at(hearthtale), "TOPLEFT drawer TOPLEFT 42 -8")
+eq("third: the Codex", at(codex), "TOPLEFT drawer TOPLEFT 76 -8")
+eq("sixth: Second Wind", at(wind), "TOPLEFT drawer TOPLEFT 76 -42")
+eq("seventh: Yonder, a new row", at(yonder), "TOPLEFT drawer TOPLEFT 8 -76")
 eq("drawer width", drawer:GetWidth(), 8 * 2 + 3 * 34 - 2)
 eq("drawer height", drawer:GetHeight(), 8 * 2 + 3 * 34 - 2)
 eq("at the minimap's scale", drawer:GetScale(), Minimap:GetEffectiveScale() / UIParent:GetEffectiveScale())
