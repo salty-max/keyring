@@ -24,7 +24,9 @@ it uses no kit, the game's own look.
     bigger than 64px. Gathered: into the drawer, its addon's `SetPoint`,
     `ClearAllPoints`, `SetParent`, `SetAllPoints` doing nothing while held
     (the drawer places it with the frame type's own, `ns.place`), its drag
-    off, LibDBIcon's fade on mouse-over off; left out, all of it back as it
+    off, LibDBIcon's fade on mouse-over off, its strata and level unfixed
+    (LibDBIcon r56 fixes them at MEDIUM and 8: the drawer, HIGH, would cover
+    the button and take its clicks; fixed again when left out); left out, all of it back as it
     was. `ns.buttons()` (label: the addon's title when the button is named
     for its folder), `ns.setLeft`, `ns.iconOf`.
   - `Drawer.lua`: the key (the game's minimap button ring and highlight, a
@@ -36,7 +38,7 @@ it uses no kit, the game's own look.
   - `Options.lua`: the settings page (a canvas in the game's Options): every
     button found, ticked when in the drawer.
 - `addon/test/game.lua`: the fake game (frames, the minimap and the game's own
-  buttons with secure names, LibStub and LibDBIcon r55 as it makes its buttons,
+  buttons with secure names, LibStub and LibDBIcon r56 as it makes its buttons, strata and level fixed,
   C_Timer, the Settings API, the mouse); `addon/test/sim.lua` plays it
   (`FOREVER=1` as Forever).
 - Release: the BigWigs packager (`.pkgmeta`, `.github/workflows/release.yml`),

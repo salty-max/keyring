@@ -61,6 +61,7 @@ local function gather(b)
     own = {},
     drag = { b:GetScript("OnDragStart"), b:GetScript("OnDragStop") },
     mouseover = b.showOnMouseover,
+    fixed = { strata = b:HasFixedFrameStrata(), level = b:HasFixedFrameLevel() },
   }
   for i = 1, b:GetNumPoints() do
     was.points[i] = { b:GetPoint(i) }
@@ -72,6 +73,10 @@ local function gather(b)
   seen[b] = b:IsShown()
   own(b, "SetParent")(b, ns.drawer)
   own(b, "ClearAllPoints")(b)
+  -- (LibDBIcon's buttons keep their strata and level fixed, MEDIUM and 8,
+  -- since r56: the game would ignore the drawer's, which would cover them)
+  b:SetFixedFrameStrata(false)
+  b:SetFixedFrameLevel(false)
   b:SetFrameStrata(ns.drawer:GetFrameStrata())
   b:SetFrameLevel(ns.drawer:GetFrameLevel() + 2)
   b:SetScript("OnDragStart", nil)
@@ -103,6 +108,8 @@ local function release(b)
   b:SetParent(was.parent)
   b:SetFrameStrata(was.strata)
   b:SetFrameLevel(was.level)
+  b:SetFixedFrameStrata(was.fixed.strata)
+  b:SetFixedFrameLevel(was.fixed.level)
   b:ClearAllPoints()
   for _, p in ipairs(was.points) do
     b:SetPoint(unpack(p))

@@ -67,6 +67,12 @@ end
 for _, b in ipairs({ hearthtale, codex, yonder, wind, questie, atlas, old }) do
   check("gathered: " .. b:GetName(), gathered[b:GetName()])
   eq(b:GetName() .. " in the drawer", b:GetParent(), drawer)
+  -- (above the drawer, or it would cover them: LibDBIcon's too, their strata
+  -- and level fixed)
+  check(
+    b:GetName() .. " above the drawer",
+    b:GetFrameStrata() == drawer:GetFrameStrata() and b:GetFrameLevel() > drawer:GetFrameLevel()
+  )
 end
 for _, b in ipairs({ MiniMapTracking, MiniMapMailFrame, GameTimeFrame, MinimapZoomIn, MiniMapWorldMapButton, game }) do
   eq("the game's own left: " .. b:GetName(), b:GetParent(), Minimap)
@@ -204,6 +210,10 @@ G.updatePosition(questie, 90)
 eq("its addon places it again", questie:GetNumPoints(), 1)
 check("its drag back", questie:GetScript("OnDragStart") ~= nil)
 eq("its level back", questie:GetFrameStrata(), "MEDIUM")
+check(
+  "… fixed again, as LibDBIcon keeps it",
+  questie:GetFrameLevel() == 8 and questie:HasFixedFrameStrata() and questie:HasFixedFrameLevel()
+)
 eq("still listed, unticked", rowOf("LibDBIcon10_Questie").check:GetChecked(), false)
 row.check:SetChecked(true)
 row.check._scripts.OnClick(row.check)

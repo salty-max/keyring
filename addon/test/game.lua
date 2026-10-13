@@ -140,12 +140,21 @@ local function frameMethods(kind)
   function m:EnableMouse() end
   function m:SetMovable() end
   function m:SetClampedToScreen() end
-  function m:SetFrameStrata(s) self._strata = s end
+  -- (a fixed strata or level: the game ignores a change, as LibDBIcon r56's)
+  function m:SetFrameStrata(s)
+    if not self._fixedStrata then self._strata = s end
+  end
+  function m:SetFixedFrameStrata(on) self._fixedStrata = on or nil end
+  function m:HasFixedFrameStrata() return self._fixedStrata == true end
   function m:GetFrameStrata()
     if self._strata then return self._strata end
     return self._parent and self._parent:GetFrameStrata() or "MEDIUM"
   end
-  function m:SetFrameLevel(l) self._level = l end
+  function m:SetFrameLevel(l)
+    if not self._fixedLevel then self._level = l end
+  end
+  function m:SetFixedFrameLevel(on) self._fixedLevel = on or nil end
+  function m:HasFixedFrameLevel() return self._fixedLevel == true end
   function m:GetFrameLevel() return self._level or (self._parent and self._parent:GetFrameLevel() + 1) or 0 end
   function m:SetScale(s) self._scale = s end
   function m:GetScale() return self._scale or 1 end
@@ -295,7 +304,8 @@ function Settings.OpenToCategory(id)
   Settings.categories[id].frame:Show()
 end
 
--- LibStub, and LibDBIcon making its buttons as it does (LibDBIcon-1.0 r55).
+-- LibStub, and LibDBIcon making its buttons as it does (LibDBIcon-1.0 r56:
+-- their strata and level fixed).
 local libs = {}
 LibStub = setmetatable({}, {
   __call = function(_, major, silent)
@@ -316,7 +326,9 @@ G.updatePosition = updatePosition
 function DBIcon:Register(name, object, db)
   local button = CreateFrame("Button", "LibDBIcon10_" .. name, Minimap)
   button:SetFrameStrata("MEDIUM")
+  button:SetFixedFrameStrata(true)
   button:SetFrameLevel(8)
+  button:SetFixedFrameLevel(true)
   button:SetSize(31, 31)
   local overlay = button:CreateTexture(nil, "OVERLAY")
   overlay:SetSize(50, 50)
