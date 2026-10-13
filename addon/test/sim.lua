@@ -109,6 +109,23 @@ hearthtale.place()
 G.updatePosition(questie, 90)
 eq("Hearthtale's place() does nothing", hearthtale:GetNumPoints(), 0)
 eq("LibDBIcon's place does nothing", questie:GetNumPoints(), 0)
+-- … and kept there: another addon setting a held button's strata and level
+-- back (as some minimap addons do with LibDBIcon's), the drawer risen since.
+questie:SetFrameStrata("MEDIUM")
+questie:SetFrameLevel(8)
+getmetatable(questie).__index.SetFrameStrata(questie, "MEDIUM")
+getmetatable(questie).__index.SetFrameLevel(questie, 8)
+check(
+  "a held button's strata and level set back by another addon: still above the drawer",
+  questie:GetFrameStrata() == drawer:GetFrameStrata() and questie:GetFrameLevel() > drawer:GetFrameLevel()
+)
+drawer:SetFrameLevel(drawer:GetFrameLevel() + 20)
+ns.open()
+check(
+  "the drawer risen: its buttons above it again at the opening",
+  questie:GetFrameLevel() > drawer:GetFrameLevel() and hearthtale:GetFrameLevel() > drawer:GetFrameLevel()
+)
+ns.close()
 eq("no drag", hearthtale:GetScript("OnDragStart"), nil)
 hearthtale:SetParent(Minimap)
 eq("nor its SetParent", hearthtale:GetParent(), drawer)
@@ -240,6 +257,21 @@ eq("one made a moment after the login: gathered", slow:GetParent(), drawer)
 G.chat = {}
 G.slash("list")
 check("/keyring list", G.chat[1] and G.chat[1]:find("in the drawer: AtlasLoot %[Core%]"), G.chat[1])
+check("… no button under the drawer", not table.concat(G.chat, "\n"):find("under the drawer"))
+do
+  local own = getmetatable(questie).__index
+  own.SetFixedFrameStrata(questie, false)
+  own.SetFrameStrata(questie, "MEDIUM")
+  G.chat = {}
+  G.slash("list")
+  local said = table.concat(G.chat, "\n")
+  check(
+    "… one under it named, with what holds it",
+    said:find("under the drawer %(HIGH %d+%): Questie %(MEDIUM %d+%)%."),
+    said
+  )
+  ns.lift(questie)
+end
 KeyringSettings.angle = 30
 G.slash("reset")
 eq("/keyring reset", KeyringSettings.angle, 190)

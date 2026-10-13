@@ -55,12 +55,21 @@ SlashCmdList.KEYRING = function(msg)
   elseif msg == "settings" or msg == "options" then
     ns.openOptions()
   elseif msg == "list" then
-    local held, left = {}, {}
+    local held, left, under = {}, {}, {}
+    local d = ns.drawer
     for _, e in ipairs(ns.buttons()) do
       table.insert(e.held and held or left, ("%s (%s)"):format(e.label, e.name))
+      -- (one the drawer would cover, which should never be: what holds it)
+      local b = e.button
+      if e.held and (b:GetFrameStrata() ~= d:GetFrameStrata() or b:GetFrameLevel() <= d:GetFrameLevel()) then
+        table.insert(under, ("%s (%s %d)"):format(e.label, b:GetFrameStrata(), b:GetFrameLevel()))
+      end
     end
     ns.say(#held == 0 and "no buttons in the drawer." or "in the drawer: " .. table.concat(held, ", ") .. ".")
     if #left > 0 then ns.say("left on the minimap: " .. table.concat(left, ", ") .. ".") end
+    if #under > 0 then
+      ns.say(("under the drawer (%s %d): %s."):format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", ")))
+    end
   elseif msg == "reset" then
     ns.settings().angle = ns.ANGLE
     ns.placeKey()

@@ -24,9 +24,12 @@ it uses no kit, the game's own look.
     bigger than 64px. Gathered: into the drawer, its addon's `SetPoint`,
     `ClearAllPoints`, `SetParent`, `SetAllPoints` doing nothing while held
     (the drawer places it with the frame type's own, `ns.place`), its drag
-    off, LibDBIcon's fade on mouse-over off, its strata and level unfixed
-    (LibDBIcon r56 fixes them at MEDIUM and 8: the drawer, HIGH, would cover
-    the button and take its clicks; fixed again when left out); left out, all of it back as it
+    off, LibDBIcon's fade on mouse-over off, its strata and level held
+    above the drawer (`lift`: set with the frame type's own methods and
+    fixed there, its own `SetFrameStrata` and `SetFrameLevel` doing nothing
+    while held, again at every layout; LibDBIcon r56 fixes them at MEDIUM
+    and 8 and another addon may set them back, and the drawer, HIGH, would
+    cover the button and take its clicks); left out, all of it back as it
     was. `ns.buttons()` (label: the addon's title when the button is named
     for its folder), `ns.setLeft`, `ns.iconOf`.
   - `Drawer.lua`: the key (the game's minimap button ring and highlight, a

@@ -7,7 +7,8 @@
 --
 -- An addon whose button is held may still try to place it, now and then or
 -- on every frame: its SetPoint, ClearAllPoints, SetAllPoints and SetParent do
--- nothing while it is held (the drawer places it with the frame type's own).
+-- nothing while it is held (the drawer places it with the frame type's own),
+-- nor its SetFrameStrata and SetFrameLevel (held above the drawer: lift).
 local _, ns = ...
 
 local known = {} -- every button found, by its frame name
@@ -19,7 +20,7 @@ local seen = {} -- [button] = shown when last laid out
 -- or are named for their addon)
 local BUTTON = { "^libdbicon10_", "minimapbutton", "minimapframe", "minimapicon", "[-_]minimap[-_]", "minimap$" }
 local PIN = { "%d$", "^handynotes", "^tomtom", "^herebedragons", "^gathermate", "^questie", "^pin" }
-local BLOCKED = { "SetPoint", "ClearAllPoints", "SetParent", "SetAllPoints" }
+local BLOCKED = { "SetPoint", "ClearAllPoints", "SetParent", "SetAllPoints", "SetFrameStrata", "SetFrameLevel" }
 -- (bigger than any minimap button: an overlay of the minimap)
 local LARGEST = 64
 
@@ -51,6 +52,23 @@ local changed
 
 local function libDBIcon() return LibStub and LibStub("LibDBIcon-1.0", true) end
 
+-- A held button above the drawer, its strata and level fixed there, as
+-- LibDBIcon r56 fixes its own at MEDIUM and 8 (the drawer, HIGH, would cover
+-- one left lower and take its clicks): set with the frame type's own methods,
+-- whatever its addon or another one tries since (as the button collectors
+-- do), and again at every layout (ns.lift), should the drawer have risen.
+local function lift(b)
+  own(b, "SetFixedFrameStrata")(b, false)
+  own(b, "SetFixedFrameLevel")(b, false)
+  own(b, "SetFrameStrata")(b, ns.drawer:GetFrameStrata())
+  own(b, "SetFrameLevel")(b, ns.drawer:GetFrameLevel() + 2)
+  own(b, "SetFixedFrameStrata")(b, true)
+  own(b, "SetFixedFrameLevel")(b, true)
+end
+function ns.lift(b)
+  if held[b] then lift(b) end
+end
+
 local function gather(b)
   if held[b] then return end
   local was = {
@@ -73,12 +91,7 @@ local function gather(b)
   seen[b] = b:IsShown()
   own(b, "SetParent")(b, ns.drawer)
   own(b, "ClearAllPoints")(b)
-  -- (LibDBIcon's buttons keep their strata and level fixed, MEDIUM and 8,
-  -- since r56: the game would ignore the drawer's, which would cover them)
-  b:SetFixedFrameStrata(false)
-  b:SetFixedFrameLevel(false)
-  b:SetFrameStrata(ns.drawer:GetFrameStrata())
-  b:SetFrameLevel(ns.drawer:GetFrameLevel() + 2)
+  lift(b)
   b:SetScript("OnDragStart", nil)
   b:SetScript("OnDragStop", nil)
   for _, m in ipairs(BLOCKED) do
@@ -105,6 +118,8 @@ local function release(b)
   for _, m in ipairs(BLOCKED) do
     b[m] = was.own[m]
   end
+  b:SetFixedFrameStrata(false)
+  b:SetFixedFrameLevel(false)
   b:SetParent(was.parent)
   b:SetFrameStrata(was.strata)
   b:SetFrameLevel(was.level)

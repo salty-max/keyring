@@ -66,6 +66,7 @@ function ns.layout()
   for i, b in ipairs(shown) do
     local column, row = (i - 1) % columns, math.floor((i - 1) / columns)
     ns.place(b, "TOPLEFT", drawer, "TOPLEFT", PAD + column * cell, -(PAD + row * cell))
+    ns.lift(b)
     b:SetAlpha(1)
   end
   drawer:SetSize(2 * PAD + columns * cell - GAP, 2 * PAD + rows * cell - GAP)
