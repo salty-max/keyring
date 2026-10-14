@@ -5,7 +5,7 @@ leaving one key button on the minimap. Click it to reach your addons, then
 close it with Escape, another click on the key or a click elsewhere.
 
 For Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of
-Warcraft: Forever. One download covers all of them. In English and French.
+Warcraft: Forever. One download covers all of them. In English, French and German.
 
 ## Using Keyring
 

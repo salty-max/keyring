@@ -31,7 +31,7 @@ One download covers Classic Era, Hardcore, Season of Discovery, TBC Anniversary 
 
 Protected buttons are left in place because the game restricts moving or hiding them during combat.
 
-Keyring speaks English and French. Other clients get English.
+Keyring speaks English, French and German (a first translation: corrections are welcome on GitHub). Other clients get English.
 
 ## Support
 

@@ -50,7 +50,7 @@ it uses no kit, the game's own look.
   reader has checked); `--keys` writes `i18n/words.json`, every word to
   translate. No semicolons in any language. The commands stay English. The
   TOCs' `Notes-<locale>` describe it in the addon list. French: done 14
-  October 2026.
+  October 2026, German (flagged) the same day.
 - `addon/test/game.lua`: the fake game (frames, the minimap and the game's own
   buttons with secure names, LibStub and LibDBIcon r56 as it makes its buttons, strata and level fixed,
   C_Timer, the Settings API, the mouse); `addon/test/sim.lua` plays it
