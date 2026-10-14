@@ -341,6 +341,18 @@ check("the list in French", table.concat(G.chat, "\n"):find("dans le tiroir : He
 eq("a word no translation has: English", ns.L["Not a word Keyring says"], "Not a word Keyring says")
 check("Hearthtale gathered", h2:GetParent() == KeyringDrawer)
 
+-- 14. A German client: its own file too.
+G = dofile("addon/test/game.lua")
+G.locale = "deDE"
+KeyringSettings = nil
+G.button("HearthtaleMinimapButton", 200)
+ns = G.load()
+G.login()
+GameTooltip._lines = {}
+KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
+eq("the key's tooltip in German", GameTooltip._lines[2], "1 Button")
+check("… its help in German", GameTooltip._lines[3]:find("^Linksklick öffnet die Schublade"), GameTooltip._lines[3])
+
 io.write(
   ("%s: %d checks passed%s\n"):format(
     G.FOREVER and "Forever" or "Classic Era",
