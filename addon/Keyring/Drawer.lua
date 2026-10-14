@@ -6,6 +6,7 @@
 -- menu or a tooltip (a gathered button may have opened one, and hiding the
 -- button would close its menu).
 local _, ns = ...
+local L = ns.L
 
 local ICON = "Interface\\AddOns\\Keyring\\Media\\Logo"
 -- (the key a third larger than the game's buttons, all of it: the ring, the
@@ -40,7 +41,7 @@ table.insert(UISpecialFrames, "KeyringDrawer")
 
 local empty = drawer:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
 empty:SetPoint("CENTER")
-empty:SetText("No addon's button yet")
+empty:SetText(L["No addon's button yet"])
 
 -- The gathered buttons shown (an addon may hide its own), in a grid.
 function ns.layout()
@@ -214,13 +215,13 @@ function ns.createKey()
     GameTooltip:AddLine("Keyring")
     local n = count()
     GameTooltip:AddLine(
-      n == 0 and "No buttons gathered yet" or n == 1 and "1 button" or ("%d buttons"):format(n),
+      n == 0 and L["No buttons gathered yet"] or n == 1 and L["1 button"] or L["%d buttons"]:format(n),
       1,
       1,
       1
     )
     GameTooltip:AddLine(
-      "Click to open the drawer, right-click for the settings. Drag to move the key.",
+      L["Click to open the drawer, right-click for the settings. Drag to move the key."],
       0.7,
       0.7,
       0.7,

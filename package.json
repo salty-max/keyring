@@ -4,8 +4,9 @@
   "description": "A World of Warcraft addon: every addon's minimap button gathered behind one key on the minimap, in a dark drawer",
   "license": "MIT",
   "scripts": {
-    "check": "bun run lint:lua && luajit addon/test/sim.lua && FOREVER=1 luajit addon/test/sim.lua && bun scripts/package.ts --check",
+    "check": "bun scripts/locales.ts --check && bun run lint:lua && luajit addon/test/sim.lua && FOREVER=1 luajit addon/test/sim.lua && bun scripts/package.ts --check",
     "package": "bun scripts/package.ts",
+    "locales": "bun scripts/locales.ts",
     "lint:lua": "stylua --check addon && selene addon/Keyring",
     "format:lua": "stylua addon"
   }

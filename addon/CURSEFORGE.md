@@ -31,6 +31,8 @@ One download covers Classic Era, Hardcore, Season of Discovery, TBC Anniversary 
 
 Protected buttons are left in place because the game restricts moving or hiding them during combat.
 
+Keyring speaks English and French. Other clients get English.
+
 ## Support
 
 Keyring is free and will stay free. If it's made your minimap less crowded, you can support the addon with a coffee on [Ko-fi](https://ko-fi.com/salty_max). Thank you.

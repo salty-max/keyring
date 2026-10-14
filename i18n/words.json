@@ -1,0 +1,17 @@
+{
+  "%d buttons": "",
+  "(hidden by its addon)": "",
+  "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "",
+  "1 button": "",
+  "Click to open the drawer, right-click for the settings. Drag to move the key.": "",
+  "Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it.": "",
+  "No addon's button yet": "",
+  "No addon's minimap button found yet.": "",
+  "No buttons gathered yet": "",
+  "in the drawer: %s.": "",
+  "left on the minimap: %s.": "",
+  "no buttons in the drawer.": "",
+  "the key is back in its place.": "",
+  "the settings page needs the game's Options. /keyring list shows the buttons.": "",
+  "under the drawer (%s %d): %s.": ""
+}

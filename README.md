@@ -5,7 +5,7 @@ leaving one key button on the minimap. Click it to reach your addons, then
 close it with Escape, another click on the key or a click elsewhere.
 
 For Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of
-Warcraft: Forever. One download covers all of them.
+Warcraft: Forever. One download covers all of them. In English and French.
 
 ## Using Keyring
 
@@ -47,7 +47,8 @@ The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 ## Development
 
 ```bash
-bun run check        # Check Lua, both game simulations and the TOCs
+bun run check        # Check the translations, Lua, both game simulations and the TOCs
+bun run locales      # Write addon/Keyring/Text_<locale>.lua from i18n/
 bun run package      # Create dist/Keyring-<version>.zip
 scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md
 ```

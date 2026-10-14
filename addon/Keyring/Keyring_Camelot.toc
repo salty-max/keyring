@@ -1,6 +1,7 @@
 ## Interface: 16001
 ## Title: Keyring
 ## Notes: Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap.
+## Notes-frFR: Rangez les boutons de vos addons autour de la minicarte dans un tiroir derrière une seule clé. Choisissez ceux à ranger et ceux à laisser sur la minicarte.
 ## Category: Map & Minimap
 ## Author: salty-max
 ## Version: 0.1.3
@@ -15,6 +16,7 @@
 # Anniversary, _Camelot: Forever), the same but for the interface
 # (scripts/package.ts checks).
 Core.lua
+Text_[TextLocale].lua
 Gather.lua
 Drawer.lua
 Options.lua

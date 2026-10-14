@@ -10,6 +10,18 @@
 -- clear of the game's buttons; left: the buttons left on the minimap)
 local _, ns = ...
 
+-- Every word Keyring shows goes through L, English by default: the client
+-- loads its own Text_<locale>.lua next (the TOCs name Text_[TextLocale].lua,
+-- scripts/locales.ts writes them from i18n/), which hands its words to
+-- ns.translate. A word a translation lacks stays English.
+local L = setmetatable({}, { __index = function(_, k) return k end })
+ns.L = L
+function ns.translate(t)
+  for k, v in pairs(t.words or {}) do
+    L[k] = v
+  end
+end
+
 ns.ANGLE = 190
 
 function ns.settings()
@@ -65,16 +77,18 @@ SlashCmdList.KEYRING = function(msg)
         table.insert(under, ("%s (%s %d)"):format(e.label, b:GetFrameStrata(), b:GetFrameLevel()))
       end
     end
-    ns.say(#held == 0 and "no buttons in the drawer." or "in the drawer: " .. table.concat(held, ", ") .. ".")
-    if #left > 0 then ns.say("left on the minimap: " .. table.concat(left, ", ") .. ".") end
+    ns.say(#held == 0 and L["no buttons in the drawer."] or L["in the drawer: %s."]:format(table.concat(held, ", ")))
+    if #left > 0 then ns.say(L["left on the minimap: %s."]:format(table.concat(left, ", "))) end
     if #under > 0 then
-      ns.say(("under the drawer (%s %d): %s."):format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", ")))
+      ns.say(
+        L["under the drawer (%s %d): %s."]:format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", "))
+      )
     end
   elseif msg == "reset" then
     ns.settings().angle = ns.ANGLE
     ns.placeKey()
-    ns.say("the key is back in its place.")
+    ns.say(L["the key is back in its place."])
   else
-    ns.say("/keyring opens the drawer; /keyring settings, list (the buttons), reset (the key's place).")
+    ns.say(L["/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place)."])
   end
 end

@@ -40,6 +40,17 @@ it uses no kit, the game's own look.
     TOOLTIP strata, since hiding a button closes the menu it opened).
   - `Options.lua`: the settings page (a canvas in the game's Options): every
     button found, ticked when in the drawer.
+- Languages: every word Keyring shows goes through `L["..."]` (`ns.L`,
+  Core.lua: English by default, a word a translation lacks stays English).
+  The TOCs load `Text_[TextLocale].lua` right after Core.lua: the client
+  loads its own language's file. `scripts/locales.ts` (`bun run locales`, its
+  `--check` in `bun run check`) writes `Text_<locale>.lua` for the game's
+  twelve languages from `i18n/<locale>/words.json` (a stub where there's no
+  translation; esMX borrows esES; `meta.json`: `flagged` for one no native
+  reader has checked); `--keys` writes `i18n/words.json`, every word to
+  translate. No semicolons in any language. The commands stay English. The
+  TOCs' `Notes-<locale>` describe it in the addon list. French: done 14
+  October 2026.
 - `addon/test/game.lua`: the fake game (frames, the minimap and the game's own
   buttons with secure names, LibStub and LibDBIcon r56 as it makes its buttons, strata and level fixed,
   C_Timer, the Settings API, the mouse); `addon/test/sim.lua` plays it

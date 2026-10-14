@@ -316,6 +316,31 @@ G.click(KeyringMinimapButton)
 check("an empty drawer opens", KeyringDrawer:IsShown())
 eq("no buttons", #ns.buttons(), 0)
 
+-- 13. A French client: its own language file, every word in French, a word
+-- it lacks in English.
+G = dofile("addon/test/game.lua")
+G.locale = "frFR"
+KeyringSettings = nil
+local h2 = G.button("HearthtaleMinimapButton", 200)
+ns = G.load()
+G.login()
+GameTooltip._lines = {}
+KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
+eq("the key's tooltip in French", GameTooltip._lines[2], "1 bouton")
+eq(
+  "its help in French",
+  GameTooltip._lines[3],
+  ns.L["Click to open the drawer, right-click for the settings. Drag to move the key."]
+)
+check("… which is French", GameTooltip._lines[3]:find("^Clic pour ouvrir le tiroir"), GameTooltip._lines[3])
+G.chat = {}
+G.slash("help")
+check("/keyring's help in French", G.chat[#G.chat]:find("/keyring ouvre le tiroir%."), G.chat[#G.chat])
+G.slash("list")
+check("the list in French", table.concat(G.chat, "\n"):find("dans le tiroir : Hearthtale"), table.concat(G.chat, "\n"))
+eq("a word no translation has: English", ns.L["Not a word Keyring says"], "Not a word Keyring says")
+check("Hearthtale gathered", h2:GetParent() == KeyringDrawer)
+
 io.write(
   ("%s: %d checks passed%s\n"):format(
     G.FOREVER and "Forever" or "Classic Era",

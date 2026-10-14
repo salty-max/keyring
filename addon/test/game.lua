@@ -8,6 +8,7 @@
 local G = { chat = {}, timers = {}, now = 0, secure = {}, events = {}, addons = {}, mouse = {} }
 local FOREVER = os.getenv("FOREVER") == "1"
 G.FOREVER = FOREVER
+G.locale = "enUS" -- (the client's language: sim.lua sets frFR to play a French client)
 
 -- Frames ----------------------------------------------------------------
 
@@ -438,6 +439,8 @@ function G.load()
   local ns = {}
   for line in toc:gmatch("[^\n]+") do
     if not line:find("^#") then
+      -- (the client's own language file)
+      line = line:gsub("%[TextLocale%]", G.locale)
       local chunk = assert(loadfile(dir .. line))
       chunk("Keyring", ns)
     end

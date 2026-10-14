@@ -3,6 +3,7 @@
 -- where its addon put it, tick it to take it back. /keyring settings, or a
 -- right-click on the key.
 local _, ns = ...
+local L = ns.L
 
 local ROW = 26
 
@@ -19,7 +20,7 @@ about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 about:SetPoint("RIGHT", -16, 0)
 about:SetJustifyH("LEFT")
 about:SetText(
-  "Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it."
+  L["Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it."]
 )
 
 local scroll = CreateFrame("ScrollFrame", "KeyringOptionsScroll", panel, "UIPanelScrollFrameTemplate")
@@ -31,7 +32,7 @@ scroll:SetScrollChild(list)
 
 local none = list:CreateFontString(nil, "ARTWORK", "GameFontDisable")
 none:SetPoint("TOPLEFT", 4, -4)
-none:SetText("No addon's minimap button found yet.")
+none:SetText(L["No addon's minimap button found yet."])
 
 local rows = {}
 
@@ -71,7 +72,7 @@ function ns.refreshOptions()
     else
       r.icon:Hide()
     end
-    r.note:SetText(not e.shown and "(hidden by its addon)" or "")
+    r.note:SetText(not e.shown and L["(hidden by its addon)"] or "")
     r:Show()
   end
   for i = #buttons + 1, #rows do
@@ -90,7 +91,7 @@ function ns.openOptions()
   if category then
     Settings.OpenToCategory(category:GetID())
   else
-    ns.say("the settings page needs the game's Options; /keyring list shows the buttons.")
+    ns.say(L["the settings page needs the game's Options. /keyring list shows the buttons."])
   end
 end
 
