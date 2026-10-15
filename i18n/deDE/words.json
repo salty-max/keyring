@@ -1,10 +1,10 @@
 {
   "%d buttons": "%d Buttons",
   "(hidden by its addon)": "(von seinem Addon ausgeblendet)",
-  "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "/keyring öffnet die Schublade. /keyring settings, list (die Buttons), reset (der Platz des Schlüssels).",
+  "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "/keyring öffnet die Schublade. /keyring settings öffnet die Einstellungen. /keyring list zeigt die Buttons. /keyring reset setzt den Schlüssel an seine Ausgangsposition zurück.",
   "1 button": "1 Button",
   "Click to open the drawer, right-click for the settings. Drag to move the key.": "Linksklick öffnet die Schublade, Rechtsklick die Einstellungen. Ziehen, um den Schlüssel zu verschieben.",
-  "Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it.": "Der Minikarten-Button jedes Addons, verwahrt in der Schublade, die der Schlüssel öffnet. Entferne das Häkchen bei einem Button, um ihn auf der Minikarte zu lassen, wo sein Addon ihn platziert hat.",
+  "Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it.": "Der Schlüssel öffnet eine Schublade mit den Minikarten-Buttons deiner Addons. Entferne das Häkchen bei einem Button, damit er auf der Minikarte bleibt, wo sein Addon ihn platziert hat.",
   "No addon's button yet": "Noch kein Addon-Button",
   "No addon's minimap button found yet.": "Noch kein Minikarten-Button eines Addons gefunden.",
   "No buttons gathered yet": "Noch keine Buttons gesammelt",
@@ -12,6 +12,6 @@
   "left on the minimap: %s.": "auf der Minikarte gelassen: %s.",
   "no buttons in the drawer.": "keine Buttons in der Schublade.",
   "the key is back in its place.": "der Schlüssel ist wieder an seinem Platz.",
-  "the settings page needs the game's Options. /keyring list shows the buttons.": "die Einstellungsseite braucht die Optionen des Spiels. /keyring list zeigt die Buttons.",
-  "under the drawer (%s %d): %s.": "unter der Schublade (%s %d): %s."
+  "the settings page needs the game's Options. /keyring list shows the buttons.": "die Einstellungsseite ist in diesem Client nicht verfügbar. /keyring list zeigt die Buttons.",
+  "under the drawer (%s %d): %s.": "von der Schublade verdeckt (%s %d): %s."
 }

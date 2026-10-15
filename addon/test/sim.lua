@@ -353,6 +353,43 @@ KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
 eq("the key's tooltip in German", GameTooltip._lines[2], "1 Button")
 check("… its help in German", GameTooltip._lines[3]:find("^Linksklick öffnet die Schublade"), GameTooltip._lines[3])
 
+-- The German help must retain executable commands and the same checkbox
+-- direction: checked gathers a button, unchecked leaves it on the minimap.
+G.slash("help")
+check(
+  "German help: full reset command",
+  G.chat[#G.chat]:find("/keyring reset setzt den Schlüssel", 1, true),
+  G.chat[#G.chat]
+)
+G.click(KeyringMinimapButton, "RightButton")
+row = rowOf("HearthtaleMinimapButton")
+check("German settings: gathered is checked", row and row.check:GetChecked())
+row.check:SetChecked(false)
+row.check._scripts.OnClick(row.check)
+G.slash("list")
+check(
+  "German settings: unchecked is left on the minimap",
+  G.chat[#G.chat]:find("auf der Minikarte gelassen: Hearthtale", 1, true),
+  G.chat[#G.chat]
+)
+row.check:SetChecked(true)
+row.check._scripts.OnClick(row.check)
+G.slash("list")
+check("German list: gathered again", G.chat[#G.chat]:find("in der Schublade: Hearthtale", 1, true), G.chat[#G.chat])
+-- A new session without the settings API exercises the actual fallback.
+G = dofile("addon/test/game.lua")
+G.locale = "deDE"
+Settings = nil
+KeyringSettings = nil
+ns = G.load()
+G.login()
+G.slash("settings")
+check(
+  "German settings fallback: unavailable, with a working command",
+  G.chat[#G.chat]:find("in diesem Client nicht verfügbar. /keyring list", 1, true),
+  G.chat[#G.chat]
+)
+
 io.write(
   ("%s: %d checks passed%s\n"):format(
     G.FOREVER and "Forever" or "Classic Era",
