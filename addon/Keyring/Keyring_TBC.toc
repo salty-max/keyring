@@ -7,7 +7,7 @@
 ## Notes-esMX: Reúne los botones del minimapa de tus addons en un cajón que se abre con una sola llave. Elige cuáles guardar y cuáles dejar en el minimapa.
 ## Category: Map & Minimap
 ## Author: salty-max
-## Version: 0.3.0
+## Version: 0.3.1
 ## SavedVariables: KeyringSettings
 ## IconTexture: Interface\AddOns\Keyring\Media\Logo
 ## X-Website: https://github.com/salty-max/keyring
