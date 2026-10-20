@@ -23,7 +23,7 @@ force-added, anything else there is a local note, absent from a worktree.
 
 ```bash
 bun run check        # languages, lint, the simulation on Classic Era and Forever, TOCs
-bun ../addon-kit/q.ts check -- bun run check   # the same, quiet, stamping the tree for the push
+bun "$(git rev-parse --path-format=absolute --git-common-dir)/../../addon-kit/q.ts" check -- bun run check   # the same, quiet, stamping the tree for the push
 bun run format:lua   # StyLua
 bun run locales      # after a new L["..."] (--keys writes i18n/words.json)
 bun run package      # dist/Keyring-<version>.zip for a test in the game
