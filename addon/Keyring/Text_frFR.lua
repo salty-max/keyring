@@ -2,7 +2,7 @@
 local _, ns = ...
 ns.translate({
   locale = "frFR",
-  plural = "one",
+  plural = "fr",
   words = {
     ["(hidden by its addon)"] = "(masqué par son addon)",
     ["/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place)."] = "/keyring ouvre le tiroir. /keyring settings, list (les boutons), reset (la place de la clé).",

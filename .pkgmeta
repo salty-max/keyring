@@ -27,3 +27,4 @@ ignore:
   - selene.toml
   - stylua.toml
   - wow.yml
+  - keyring.yml

@@ -22,7 +22,8 @@ force-added, anything else there is a local note, absent from a worktree.
 ## Commands
 
 ```bash
-bun run check        # languages, lint, the simulation on Classic Era and Forever, TOCs
+bun run check        # the kit's scripts (kit:check), then check:ci: languages, lint, the simulation on Classic Era and Forever, TOCs
+bun run check:ci     # what CI and the release gate run: no family folder (the kit, the saved ids and the generators' checks aside)
 bun "$(git rev-parse --path-format=absolute --git-common-dir)/../../addon-kit/q.ts" check -- bun run check   # the same, quiet, stamping the tree for the push
 bun run format:lua   # StyLua
 bun run locales      # after a new L["..."] (--keys writes i18n/words.json)
@@ -43,7 +44,7 @@ scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Act
   language; commands and addon names stay as they are. A new game function
   goes into addon-kit's `wow.yml` (then `bun run kit:sync`).
 - `scripts/root.ts`, `scripts/locales-lib.ts` (the family's languages
-  core), `wow.yml` and `stylua.toml` are the kit's copies (`bun run
+  core), `scripts/package-lib.ts` (the family's package), `wow.yml` and `stylua.toml` are the kit's copies (`bun run
   kit:sync`, the scripts' alone: Keyring carries no Lua of the kit's);
   Keyring's own globals for selene are `keyring.yml`.
 - Conventional Commits, lowercase subjects, no AI trailers. Commit locally;
