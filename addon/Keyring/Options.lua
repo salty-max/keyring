@@ -91,7 +91,7 @@ function ns.openOptions()
   if category then
     Settings.OpenToCategory(category:GetID())
   else
-    ns.say(L["the settings page needs the game's Options. /keyring list shows the buttons."])
+    ns.say(L["The settings page needs the game's Options. /keyring list shows the buttons."])
   end
 end
 

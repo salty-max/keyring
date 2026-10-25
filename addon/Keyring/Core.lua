@@ -77,17 +77,17 @@ SlashCmdList.KEYRING = function(msg)
         table.insert(under, ("%s (%s %d)"):format(e.label, b:GetFrameStrata(), b:GetFrameLevel()))
       end
     end
-    ns.say(#held == 0 and L["no buttons in the drawer."] or L["in the drawer: %s."]:format(table.concat(held, ", ")))
-    if #left > 0 then ns.say(L["left on the minimap: %s."]:format(table.concat(left, ", "))) end
+    ns.say(#held == 0 and L["No buttons in the drawer."] or L["In the drawer: %s."]:format(table.concat(held, ", ")))
+    if #left > 0 then ns.say(L["Left on the minimap: %s."]:format(table.concat(left, ", "))) end
     if #under > 0 then
       ns.say(
-        L["under the drawer (%s %d): %s."]:format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", "))
+        L["Under the drawer (%s %d): %s."]:format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", "))
       )
     end
   elseif msg == "reset" then
     ns.settings().angle = ns.ANGLE
     ns.placeKey()
-    ns.say(L["the key is back in its place."])
+    ns.say(L["The key is back in its place."])
   else
     ns.say(L["/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place)."])
   end

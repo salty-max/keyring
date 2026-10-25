@@ -256,7 +256,7 @@ eq("one made a moment after the login: gathered", slow:GetParent(), drawer)
 -- 9. The slash command: the list, the key's place.
 G.chat = {}
 G.slash("list")
-check("/keyring list", G.chat[1] and G.chat[1]:find("in the drawer: AtlasLoot %[Core%]"), G.chat[1])
+check("/keyring list", G.chat[1] and G.chat[1]:find("In the drawer: AtlasLoot %[Core%]"), G.chat[1])
 check("… no button under the drawer", not table.concat(G.chat, "\n"):find("under the drawer"))
 do
   local own = getmetatable(questie).__index
@@ -267,7 +267,7 @@ do
   local said = table.concat(G.chat, "\n")
   check(
     "… one under it named, with what holds it",
-    said:find("under the drawer %(HIGH %d+%): Questie %(MEDIUM %d+%)%."),
+    said:find("Under the drawer %(HIGH %d+%): Questie %(MEDIUM %d+%)%."),
     said
   )
   ns.lift(questie)
@@ -337,7 +337,7 @@ G.chat = {}
 G.slash("help")
 check("/keyring's help in French", G.chat[#G.chat]:find("/keyring ouvre le tiroir%."), G.chat[#G.chat])
 G.slash("list")
-check("the list in French", table.concat(G.chat, "\n"):find("dans le tiroir : Hearthtale"), table.concat(G.chat, "\n"))
+check("the list in French", table.concat(G.chat, "\n"):find("Dans le tiroir : Hearthtale"), table.concat(G.chat, "\n"))
 eq("a word no translation has: English", ns.L["Not a word Keyring says"], "Not a word Keyring says")
 check("Hearthtale gathered", h2:GetParent() == KeyringDrawer)
 
@@ -369,13 +369,13 @@ row.check._scripts.OnClick(row.check)
 G.slash("list")
 check(
   "German settings: unchecked is left on the minimap",
-  G.chat[#G.chat]:find("auf der Minikarte gelassen: Hearthtale", 1, true),
+  G.chat[#G.chat]:find("Auf der Minikarte gelassen: Hearthtale", 1, true),
   G.chat[#G.chat]
 )
 row.check:SetChecked(true)
 row.check._scripts.OnClick(row.check)
 G.slash("list")
-check("German list: gathered again", G.chat[#G.chat]:find("in der Schublade: Hearthtale", 1, true), G.chat[#G.chat])
+check("German list: gathered again", G.chat[#G.chat]:find("In der Schublade: Hearthtale", 1, true), G.chat[#G.chat])
 -- A new session without the settings API exercises the actual fallback.
 G = dofile("addon/test/game.lua")
 G.locale = "deDE"
@@ -434,8 +434,8 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   eq(locale .. ": unchecked button on minimap", first:GetParent(), Minimap)
   G.chat = {}
   G.slash("list")
-  check(locale .. ": gathered list", G.chat[1]:find("en el cajón: Yonder", 1, true), G.chat[1])
-  check(locale .. ": excluded list", G.chat[2]:find("en el minimapa: Hearthtale", 1, true), G.chat[2])
+  check(locale .. ": gathered list", G.chat[1]:find("En el cajón: Yonder", 1, true), G.chat[1])
+  check(locale .. ": excluded list", G.chat[2]:find("En el minimapa: Hearthtale", 1, true), G.chat[2])
   eq(locale .. ": singular tooltip", tooltip(), "1 botón")
   -- The diagnostic has three typed placeholders. Internal strata tokens
   -- remain unchanged even though the surrounding message is translated.
@@ -445,7 +445,7 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   G.slash("list")
   check(
     locale .. ": translated diagnostic with strata and levels",
-    G.chat[#G.chat]:find("cubiertos por el cajón %(HIGH %d+%): Yonder %(MEDIUM %d+%)%."),
+    G.chat[#G.chat]:find("Cubiertos por el cajón %(HIGH %d+%): Yonder %(MEDIUM %d+%)%."),
     G.chat[#G.chat]
   )
   ns.lift(second)
@@ -460,7 +460,7 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   KeyringSettings.angle = 30
   G.slash("reset")
   eq(locale .. ": reset action", KeyringSettings.angle, 190)
-  check(locale .. ": reset message", G.chat[#G.chat]:find("la llave vuelve a su posición inicial.", 1, true))
+  check(locale .. ": reset message", G.chat[#G.chat]:find("La llave vuelve a su posición inicial.", 1, true))
   -- Missing Settings API: the translated advice still gives a usable command.
   G = dofile("addon/test/game.lua")
   G.locale = locale
