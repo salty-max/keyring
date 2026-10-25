@@ -41,7 +41,11 @@ scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Act
   menu or tooltip a button opened.
 - Every word through `L`, English by default; no semicolons in any
   language; commands and addon names stay as they are. A new game function
-  goes into `wow.yml`.
+  goes into addon-kit's `wow.yml` (then `bun run kit:sync`).
+- `scripts/root.ts`, `scripts/locales-lib.ts` (the family's languages
+  core), `wow.yml` and `stylua.toml` are the kit's copies (`bun run
+  kit:sync`, the scripts' alone: Keyring carries no Lua of the kit's);
+  Keyring's own globals for selene are `keyring.yml`.
 - Conventional Commits, lowercase subjects, no AI trailers. Commit locally;
   ask before any push, release or deploy. The pre-push hook wants a check
   stamp on the tree (q), which `release.sh` makes after the version bump.

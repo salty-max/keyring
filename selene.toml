@@ -1,6 +1,6 @@
 # The addon's Lua, linted by selene (bun run lint:lua): Lua 5.1 and the game's
 # globals the addon uses (wow.yml).
-std = "wow"
+std = "wow+keyring"
 exclude = ["addon/Keyring/Text_*.lua"]
 
 [lints]
