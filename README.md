@@ -50,7 +50,7 @@ The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 bun run check        # Check the translations, Lua, both game simulations and the TOCs
 bun run locales      # Write addon/Keyring/Text_<locale>.lua from i18n/
 bun run package      # Create dist/Keyring-<version>.zip
-scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md
+scripts/release.sh --version X.Y.Z [--hold] NOTES.md
 ```
 
 ## License

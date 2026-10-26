@@ -28,7 +28,7 @@ bun "$(git rev-parse --path-format=absolute --git-common-dir)/../../addon-kit/q.
 bun run format:lua   # StyLua
 bun run locales      # after a new L["..."] (--keys writes i18n/words.json)
 bun run package      # dist/Keyring-<version>.zip for a test in the game
-scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Actions publish
+scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actions publish
 ```
 
 ## Hard rules
