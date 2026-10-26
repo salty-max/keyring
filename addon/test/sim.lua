@@ -369,7 +369,7 @@ row.check._scripts.OnClick(row.check)
 G.slash("list")
 check(
   "German settings: unchecked is left on the minimap",
-  G.chat[#G.chat]:find("Auf der Minikarte gelassen: Hearthtale", 1, true),
+  G.chat[#G.chat]:find("Auf der Minikarte belassen: Hearthtale", 1, true),
   G.chat[#G.chat]
 )
 row.check:SetChecked(true)
@@ -460,7 +460,7 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   KeyringSettings.angle = 30
   G.slash("reset")
   eq(locale .. ": reset action", KeyringSettings.angle, 190)
-  check(locale .. ": reset message", G.chat[#G.chat]:find("La llave vuelve a su posición inicial.", 1, true))
+  check(locale .. ": reset message", G.chat[#G.chat]:find("La llave vuelve a su sitio.", 1, true))
   -- Missing Settings API: the translated advice still gives a usable command.
   G = dofile("addon/test/game.lua")
   G.locale = locale
