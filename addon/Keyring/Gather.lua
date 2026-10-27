@@ -26,6 +26,13 @@ local LARGEST = 64
 
 local function nop() end
 
+-- Whether a button is shown; one the game won't say is taken for shown.
+local function shownOf(b)
+  local shown = ns.plain(b:IsShown())
+  if shown == nil then return true end
+  return shown
+end
+
 -- The frame type's own method, whatever the button holds in its place.
 local function own(b, method) return getmetatable(b).__index[method] end
 
@@ -37,7 +44,9 @@ local function byName(f)
   if _G[name] == f and issecurevariable(_G, name) then return end
   if f:IsProtected() then return end
   local w, h = f:GetSize()
-  if w > LARGEST or h > LARGEST then return end
+  w, h = ns.plain(w), ns.plain(h)
+  -- (a size the game hides: not one to take for a button)
+  if not w or not h or w > LARGEST or h > LARGEST then return end
   return name
 end
 
@@ -73,8 +82,8 @@ local function gather(b)
   if held[b] then return end
   local was = {
     parent = b:GetParent(),
-    strata = b:GetFrameStrata(),
-    level = b:GetFrameLevel(),
+    strata = ns.plain(b:GetFrameStrata()),
+    level = ns.plain(b:GetFrameLevel()),
     points = {},
     own = {},
     drag = { b:GetScript("OnDragStart"), b:GetScript("OnDragStop") },
@@ -88,7 +97,7 @@ local function gather(b)
     was.own[m] = rawget(b, m)
   end
   held[b] = was
-  seen[b] = b:IsShown()
+  seen[b] = shownOf(b)
   own(b, "SetParent")(b, ns.drawer)
   own(b, "ClearAllPoints")(b)
   lift(b)
@@ -121,8 +130,9 @@ local function release(b)
   b:SetFixedFrameStrata(false)
   b:SetFixedFrameLevel(false)
   b:SetParent(was.parent)
-  b:SetFrameStrata(was.strata)
-  b:SetFrameLevel(was.level)
+  -- (a strata or a level the game hid when it was held: left where the drawer put it)
+  if was.strata then b:SetFrameStrata(was.strata) end
+  if was.level then b:SetFrameLevel(was.level) end
   b:SetFixedFrameStrata(was.fixed.strata)
   b:SetFixedFrameLevel(was.fixed.level)
   b:ClearAllPoints()
@@ -183,8 +193,8 @@ end
 -- (only when it was shown and is no longer, or the reverse: some addons show
 -- their button on every frame)
 function changed(b)
-  if not held[b] or seen[b] == b:IsShown() then return end
-  seen[b] = b:IsShown()
+  if not held[b] or seen[b] == shownOf(b) then return end
+  seen[b] = shownOf(b)
   ns.refresh()
 end
 
@@ -256,7 +266,7 @@ end
 function ns.buttons()
   local list = {}
   for name, b in pairs(known) do
-    table.insert(list, { button = b, name = name, label = labelOf(name), held = held[b] ~= nil, shown = b:IsShown() })
+    table.insert(list, { button = b, name = name, label = labelOf(name), held = held[b] ~= nil, shown = shownOf(b) })
   end
   table.sort(list, function(a, b)
     if a.label:lower() ~= b.label:lower() then return a.label:lower() < b.label:lower() end

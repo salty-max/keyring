@@ -24,6 +24,15 @@ end
 
 ns.ANGLE = 190
 
+-- A value of another addon's frame (its strata, level, parent, size), nil when
+-- the game hides it: on Forever a frame can answer with a secret value, which
+-- no addon may compare, calculate with or use as a table key. What isn't
+-- known is skipped, never guessed.
+function ns.plain(v)
+  if issecretvalue and issecretvalue(v) then return nil end
+  return v
+end
+
 function ns.settings()
   if type(KeyringSettings) ~= "table" then KeyringSettings = {} end
   local s = KeyringSettings
@@ -72,9 +81,11 @@ SlashCmdList.KEYRING = function(msg)
     for _, e in ipairs(ns.buttons()) do
       table.insert(e.held and held or left, ("%s (%s)"):format(e.label, e.name))
       -- (one the drawer would cover, which should never be: what holds it)
+      -- (a strata or a level the game hides is skipped)
       local b = e.button
-      if e.held and (b:GetFrameStrata() ~= d:GetFrameStrata() or b:GetFrameLevel() <= d:GetFrameLevel()) then
-        table.insert(under, ("%s (%s %d)"):format(e.label, b:GetFrameStrata(), b:GetFrameLevel()))
+      local strata, level = ns.plain(b:GetFrameStrata()), ns.plain(b:GetFrameLevel())
+      if e.held and strata and level and (strata ~= d:GetFrameStrata() or level <= d:GetFrameLevel()) then
+        table.insert(under, ("%s (%s %d)"):format(e.label, strata, level))
       end
     end
     ns.say(#held == 0 and L["No buttons in the drawer."] or L["In the drawer: %s."]:format(table.concat(held, ", ")))

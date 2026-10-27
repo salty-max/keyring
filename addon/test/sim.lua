@@ -316,6 +316,70 @@ G.click(KeyringMinimapButton)
 check("an empty drawer opens", KeyringDrawer:IsShown())
 eq("no buttons", #ns.buttons(), 0)
 
+-- 12b. Forever's secret values: a button whose strata, level, size and
+-- shown state the game hides (a stand-in table that errors on arithmetic and
+-- ordering, as a secret does; issecretvalue knows it). Keyring gathers it
+-- all the same, lists the buttons, closes on a click on a frame of secret
+-- strata, and lets it go, never an error.
+local SECRET = setmetatable({}, {
+  __add = function() error("secret value used in arithmetic") end,
+  __lt = function() error("secret value compared") end,
+  __le = function() error("secret value compared") end,
+  __concat = function() error("secret value concatenated") end,
+})
+G = dofile("addon/test/game.lua")
+KeyringSettings = nil
+G.addons = { { "Yonder", "Yonder" } }
+local fine = G.button("HearthtaleMinimapButton", 200)
+local hidden = G.button("YonderMinimapButton", 225)
+local function hide(f)
+  function f:GetFrameStrata() return SECRET end
+  function f:GetFrameLevel() return SECRET end
+  function f:GetSize() return SECRET, SECRET end
+  function f:IsShown() return SECRET end
+end
+hide(hidden)
+-- (one whose size is readable, its strata, level and shown state not)
+local secretive = G.button("SecondWindMinimapButton", 250)
+function secretive:GetFrameStrata() return SECRET end
+function secretive:GetFrameLevel() return SECRET end
+function secretive:IsShown() return SECRET end
+local savedSecretValue = issecretvalue
+issecretvalue = function(v) return rawequal(v, SECRET) end
+ns = G.load()
+local logged, err = pcall(G.login)
+check("a login with secret values: no error", logged, err)
+local held = {}
+for _, e in ipairs(ns.buttons()) do
+  held[e.name] = e.held
+end
+check("a plain button still gathered", held.HearthtaleMinimapButton)
+check("a button of secret size isn't taken for one", held.YonderMinimapButton == nil)
+local after = {}
+for _, e in ipairs(ns.buttons()) do
+  after[e.name] = e
+end
+check("a button of secret strata gathered", after.SecondWindMinimapButton and after.SecondWindMinimapButton.held)
+check("and counted shown", after.SecondWindMinimapButton and after.SecondWindMinimapButton.shown)
+local listed, listErr = pcall(G.slash, "list")
+check("/keyring list with secret strata and level: no error", listed, listErr)
+for _, line in ipairs(G.chat) do
+  check("not listed under the drawer", not line:find("Under the drawer", 1, true), line)
+end
+local opened, openErr = pcall(G.click, KeyringMinimapButton)
+check("the drawer opens", opened and KeyringDrawer:IsShown(), openErr)
+local other = CreateFrame("Frame", "SomeMenu", UIParent)
+function other:GetFrameStrata() return SECRET end
+function other:GetParent() return SECRET end
+G.mouse = { other }
+local clicked, clickErr = pcall(G.fire, "GLOBAL_MOUSE_DOWN", "LeftButton")
+check("a click on a frame of secret strata and parent: no error", clicked, clickErr)
+check("and the drawer closes", not KeyringDrawer:IsShown())
+local freed, freedErr = pcall(ns.setLeft, "SecondWindMinimapButton", true)
+check("a button of secret strata let go: no error", freed, freedErr)
+eq("and back on the minimap", secretive:GetParent(), Minimap)
+issecretvalue = savedSecretValue
+
 -- 13. A French client: its own language file, every word in French, a word
 -- it lacks in English.
 G = dofile("addon/test/game.lua")

@@ -128,7 +128,7 @@ end
 local function within(f, root)
   while f do
     if f == root then return true end
-    f = f:GetParent()
+    f = ns.plain(f:GetParent())
   end
 end
 
@@ -138,7 +138,8 @@ local function elsewhere()
   local foci = GetMouseFoci and GetMouseFoci() or { GetMouseFocus and GetMouseFocus() }
   for _, f in ipairs(foci) do
     if within(f, drawer) or within(f, key) then return false end
-    if f.GetFrameStrata and SPARED[f:GetFrameStrata()] then return false end
+    local strata = f.GetFrameStrata and ns.plain(f:GetFrameStrata())
+    if strata and SPARED[strata] then return false end
   end
   return true
 end
