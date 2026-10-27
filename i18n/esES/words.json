@@ -1,5 +1,6 @@
 {
   "%d buttons": "%d botones",
+  "%s:": "%s:",
   "(hidden by its addon)": "(oculto por su addon)",
   "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "/keyring abre el cajón. /keyring settings abre las opciones. /keyring list muestra los botones. /keyring reset devuelve la llave a su posición inicial.",
   "1 button": "1 botón",

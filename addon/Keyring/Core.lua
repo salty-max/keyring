@@ -66,7 +66,7 @@ function ns.on(event, fn)
   table.insert(listeners[event], fn)
 end
 
-function ns.say(text) print("|cffffd100Keyring:|r " .. text) end
+function ns.say(text) print("|cffffd100" .. L["%s:"]:format("Keyring") .. "|r " .. text) end
 
 SLASH_KEYRING1 = "/keyring"
 SlashCmdList.KEYRING = function(msg)

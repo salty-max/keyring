@@ -1,5 +1,6 @@
 {
   "%d buttons": "%d Buttons",
+  "%s:": "%s:",
   "(hidden by its addon)": "(von seinem Addon ausgeblendet)",
   "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "/keyring öffnet die Schublade. /keyring settings öffnet die Einstellungen. /keyring list zeigt die Buttons. /keyring reset setzt den Schlüssel an seine Ausgangsposition zurück.",
   "1 button": "1 Button",

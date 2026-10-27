@@ -7,6 +7,7 @@ ns.translate({
     ["(hidden by its addon)"] = "(oculto por su addon)",
     ["/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place)."] = "/keyring abre el cajón. /keyring settings abre las opciones. /keyring list muestra los botones. /keyring reset devuelve la llave a su posición inicial.",
     ["%d buttons"] = "%d botones",
+    ["%s:"] = "%s:",
     ["1 button"] = "1 botón",
     ["Click to open the drawer, right-click for the settings. Drag to move the key."] = "Clic para abrir el cajón, clic derecho para ver las opciones. Arrastra la llave para moverla.",
     ["Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it."] = "La llave abre un cajón con los botones del minimapa de tus addons. Desmarca un botón para dejarlo en el minimapa, donde lo colocó su addon.",
