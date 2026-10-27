@@ -45,6 +45,8 @@ local function byName(f)
   if f:IsProtected() then return end
   local w, h = f:GetSize()
   w, h = ns.plain(w), ns.plain(h)
+  -- (nor one whose parent it hides: it could not be put back)
+  if not ns.plain(f:GetParent()) then return end
   -- (a size the game hides: not one to take for a button)
   if not w or not h or w > LARGEST or h > LARGEST then return end
   return name
@@ -289,9 +291,9 @@ function ns.iconOf(b)
   local best
   for _, r in ipairs({ b:GetRegions() }) do
     if r:IsObjectType("Texture") then
-      local t, layer, w = r:GetTexture(), r:GetDrawLayer(), r:GetWidth()
+      local t, layer, w = ns.plain(r:GetTexture()), r:GetDrawLayer(), ns.plain(r:GetWidth())
       local disc = t == 136467 or (type(t) == "string" and t:lower():find("ui%-minimap%-background"))
-      if t and not disc and (layer == "ARTWORK" or layer == "BACKGROUND") and w > 0 and w <= 26 then
+      if t and not disc and (layer == "ARTWORK" or layer == "BACKGROUND") and w and w > 0 and w <= 26 then
         if not best or (layer == "ARTWORK" and best:GetDrawLayer() ~= "ARTWORK") then best = r end
       end
     end

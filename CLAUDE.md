@@ -37,7 +37,7 @@ scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actio
   is read as the buttons' maker, never depended on.
 - Never gather the game's own buttons (a secure global name), a protected
   frame, or one bigger than 64px. A button left out goes back exactly as it
-  was: its own methods, strata and level restored.
+  was: its own methods, strata and level restored (all but one the game hides, Forever's secret values, which stays lifted).
 - The drawer closes on the key, Escape and a click elsewhere, never on a
   menu or tooltip a button opened.
 - Every word through `L`, English by default; no semicolons in any

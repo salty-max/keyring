@@ -143,6 +143,7 @@ local function frameMethods(kind)
   function m:SetClampedToScreen() end
   -- (a fixed strata or level: the game ignores a change, as LibDBIcon r56's)
   function m:SetFrameStrata(s)
+    if issecretvalue and issecretvalue(s) then error("secret value given to SetFrameStrata") end
     if not self._fixedStrata then self._strata = s end
   end
   function m:SetFixedFrameStrata(on) self._fixedStrata = on or nil end
@@ -152,6 +153,7 @@ local function frameMethods(kind)
     return self._parent and self._parent:GetFrameStrata() or "MEDIUM"
   end
   function m:SetFrameLevel(l)
+    if issecretvalue and issecretvalue(l) then error("secret value given to SetFrameLevel") end
     if not self._fixedLevel then self._level = l end
   end
   function m:SetFixedFrameLevel(on) self._fixedLevel = on or nil end

@@ -51,7 +51,8 @@ function ns.layout()
     if e.held and e.shown then
       table.insert(shown, e.button)
       local w, h = e.button:GetSize()
-      cell = math.max(cell, w, h)
+      -- (a size the game hides counts for nothing)
+      cell = math.max(cell, ns.plain(w) or 0, ns.plain(h) or 0)
     end
   end
   local n = #shown

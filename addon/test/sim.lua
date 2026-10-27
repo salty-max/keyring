@@ -320,7 +320,9 @@ eq("no buttons", #ns.buttons(), 0)
 -- shown state the game hides (a stand-in table that errors on arithmetic and
 -- ordering, as a secret does; issecretvalue knows it). Keyring gathers it
 -- all the same, lists the buttons, closes on a click on a frame of secret
--- strata, and lets it go, never an error.
+-- strata, and lets it go, never an error. (A table stands in, so a secret used
+-- as a key or in an equality can't be trapped: those are checked by reading
+-- the code; the setters here refuse a secret, as the game's may.)
 local SECRET = setmetatable({}, {
   __add = function() error("secret value used in arithmetic") end,
   __lt = function() error("secret value compared") end,
@@ -378,6 +380,8 @@ check("and the drawer closes", not KeyringDrawer:IsShown())
 local freed, freedErr = pcall(ns.setLeft, "SecondWindMinimapButton", true)
 check("a button of secret strata let go: no error", freed, freedErr)
 eq("and back on the minimap", secretive:GetParent(), Minimap)
+-- (its strata was hidden, so none was restored: the drawer's stays)
+eq("its strata left as it was lifted", secretive._strata, KeyringDrawer:GetFrameStrata())
 issecretvalue = savedSecretValue
 
 -- 13. A French client: its own language file, every word in French, a word

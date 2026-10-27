@@ -18,7 +18,9 @@ stays there).
     bigger than 64px. Gathered: into the drawer, its addon's `SetPoint`,
     `ClearAllPoints`, `SetParent`, `SetAllPoints` doing nothing while held
     (the drawer places it with the frame type's own, `ns.place`), its drag
-    off, LibDBIcon's fade on mouse-over off, its strata and level held
+    off, LibDBIcon's fade on mouse-over off (a value of its frame the game hides,
+    a secret on Forever, is read through `ns.plain` and skipped: a strata or level
+    so hidden is not restored), its strata and level held
     above the drawer (`lift`: set with the frame type's own methods and
     fixed there, its own `SetFrameStrata` and `SetFrameLevel` doing nothing
     while held, again at every layout; LibDBIcon r56 fixes them at MEDIUM
