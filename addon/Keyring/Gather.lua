@@ -38,15 +38,18 @@ local function own(b, method) return getmetatable(b).__index[method] end
 
 local function byName(f)
   if type(f) ~= "table" or type(f.GetName) ~= "function" or f == ns.key then return end
-  local name = f:GetName()
+  local name = ns.plain(f:GetName())
   if not name or held[f] or known[name] == f then return name end
   -- selene: allow(global_usage)
   if _G[name] == f and issecurevariable(_G, name) then return end
-  if f:IsProtected() then return end
+  -- (a protection the game won't say is taken for protected)
+  local prot = f:IsProtected()
+  if (issecretvalue and issecretvalue(prot)) or prot then return end
   local w, h = f:GetSize()
   w, h = ns.plain(w), ns.plain(h)
   -- (nor one whose parent it hides: it could not be put back)
-  if not ns.plain(f:GetParent()) then return end
+  local parent = f:GetParent()
+  if parent ~= nil and not ns.plain(parent) then return end
   -- (a size the game hides: not one to take for a button)
   if not w or not h or w > LARGEST or h > LARGEST then return end
   return name
@@ -290,7 +293,8 @@ function ns.iconOf(b)
   if type(icon) == "table" and icon.GetTexture and icon:GetTexture() then return icon end
   local best
   for _, r in ipairs({ b:GetRegions() }) do
-    if r:IsObjectType("Texture") then
+    local isTexture = r:IsObjectType("Texture")
+    if not (issecretvalue and issecretvalue(isTexture)) and isTexture then
       local t, layer, w = ns.plain(r:GetTexture()), r:GetDrawLayer(), ns.plain(r:GetWidth())
       local disc = t == 136467 or (type(t) == "string" and t:lower():find("ui%-minimap%-background"))
       if t and not disc and (layer == "ARTWORK" or layer == "BACKGROUND") and w and w > 0 and w <= 26 then
