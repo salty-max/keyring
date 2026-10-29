@@ -1,4 +1,4 @@
-# Keyring
+# Keyring: Minimap Button Drawer
 
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
 Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap. -->
