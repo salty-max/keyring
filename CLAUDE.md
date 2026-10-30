@@ -2,10 +2,9 @@
 
 A World of Warcraft addon: every addon's minimap button gathered behind one
 key on the minimap's ring, in a dark drawer that opens beside it; a list in
-the settings to leave any out. For Classic Era, TBC Anniversary and World of
-Warcraft: Forever. A small sibling of Hearthtale, Lorekeeper's Codex,
-Yonder and Second Wind (same release tooling), standalone:
-it uses no kit, the game's own look (salty-max/keyring). Read the family's
+the settings to leave any out. For Classic Era and World of Warcraft:
+Forever. The one addon of the family that uses no kit, standalone (the
+release tooling is the family's): the game's own look (salty-max/keyring). Read the family's
 CLAUDE.md (`../CLAUDE.md`) first.
 
 ## Where things are
@@ -16,14 +15,11 @@ CLAUDE.md (`../CLAUDE.md`) first.
 | The words to translate | `i18n/<locale>/words.json` (`meta.json`: `flagged`) |
 | The store page | `addon/CURSEFORGE.md` |
 
-`docs/` is ignored locally (`.git/info/exclude`): the docs above are
-force-added, anything else there is a local note, absent from a worktree.
-
 ## Commands
 
 ```bash
 bun run check        # the kit's scripts (kit:check), then check:ci: languages, lint, the simulation on Classic Era and Forever, TOCs
-bun run check:ci     # what CI and the release gate run: no family folder (the kit, the saved ids and the generators' checks aside)
+bun run check:ci     # what CI and the release gate run: no family folder (the kit's copies aside)
 bun "$(git rev-parse --path-format=absolute --git-common-dir)/../../addon-kit/q.ts" check -- bun run check   # the same, quiet, stamping the tree for the push
 bun run format:lua   # StyLua
 bun run locales      # after a new L["..."] (--keys writes i18n/words.json)

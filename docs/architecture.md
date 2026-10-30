@@ -4,8 +4,9 @@ The addon file by file (moved from CLAUDE.md on 20 October 2026; the map
 stays there).
 
 - `addon/Keyring/`: one folder for every game, installable as is: each game
-  loads its own TOC (`Keyring_Vanilla.toc`: Classic Era, 11509; `_TBC.toc`:
-  TBC Anniversary, 20506; `_Camelot.toc`: Forever, 16001), the same but for
+  loads its own TOC (`Keyring_Vanilla.toc`: Classic Era, 11509; `_Camelot.toc`:
+  Forever, 16001; a `_TBC.toc` is left over from the dropped TBC Anniversary
+  and goes after the launch), the same but for
   the interface (`scripts/package.ts` checks).
   - `Core.lua`: the settings, the account's (`KeyringSettings`: the key's
     `angle`, the buttons `left` on the minimap by frame name); the events

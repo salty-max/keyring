@@ -27,7 +27,7 @@ The key uses the game's minimap ring and highlight, with a painted keyring icon.
 
 ## Compatibility
 
-One download covers Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of Warcraft: Forever.
+One download covers Classic Era, Hardcore, Season of Discovery and World of Warcraft: Forever.
 
 Protected buttons are left in place because the game restricts moving or hiding them during combat.
 

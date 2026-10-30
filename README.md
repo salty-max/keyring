@@ -4,8 +4,8 @@ Keyring collects your World of Warcraft addon minimap buttons into a drawer,
 leaving one key button on the minimap. Click it to reach your addons, then
 close it with Escape, another click on the key or a click elsewhere.
 
-For Classic Era, Hardcore, Season of Discovery, TBC Anniversary and World of
-Warcraft: Forever. One download covers all of them. In English, French, German and Spanish.
+For Classic Era, Hardcore, Season of Discovery and World of Warcraft:
+Forever. One download covers all of them. In English, French, German and Spanish.
 
 ## Using Keyring
 
@@ -40,8 +40,8 @@ Get it from [CurseForge](https://www.curseforge.com/projects/1739386),
 [Wago](https://addons.wago.io/addons/ANz7JV64) or
 [GitHub releases](https://github.com/salty-max/keyring/releases).
 
-Keyring works independently and can gather buttons from Hearthtale,
-Lorekeeper's Codex, Yonder, Second Wind and other addons.
+Keyring works independently and gathers the buttons of any addon, the
+family's included.
 The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 
 ## Development
