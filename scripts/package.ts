@@ -10,4 +10,4 @@
 import { join } from "node:path";
 import { run } from "./package-lib";
 
-run({ root: join(import.meta.dir, ".."), name: "Keyring", games: { classic: [], tbc: [], forever: [] } });
+run({ root: join(import.meta.dir, ".."), name: "Keyring", games: { classic: [], forever: [] } });

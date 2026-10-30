@@ -5,8 +5,7 @@ stays there).
 
 - `addon/Keyring/`: one folder for every game, installable as is: each game
   loads its own TOC (`Keyring_Vanilla.toc`: Classic Era, 11509; `_Camelot.toc`:
-  Forever, 16001; a `_TBC.toc` is left over from the dropped TBC Anniversary
-  and goes after the launch), the same but for
+  Forever, 16001), the same but for
   the interface (`scripts/package.ts` checks).
   - `Core.lua`: the settings, the account's (`KeyringSettings`: the key's
     `angle`, the buttons `left` on the minimap by frame name); the events
@@ -42,7 +41,7 @@ stays there).
   The TOCs load `Text_[TextLocale].lua` right after Core.lua: the client
   loads its own language's file. `scripts/locales.ts` (`bun run locales`, its
   `--check` in `bun run check`) writes `Text_<locale>.lua` for the game's
-  twelve languages from `i18n/<locale>/words.json` (a stub where there's no
+  eleven languages from `i18n/<locale>/words.json` (a stub where there's no
   translation; esMX borrows esES; `meta.json`: `flagged` for one no native
   reader has checked); `--keys` writes `i18n/words.json`, every word to
   translate. No semicolons in any language. The commands stay English. The
