@@ -41,7 +41,7 @@ table.insert(UISpecialFrames, "KeyringDrawer")
 
 local empty = drawer:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
 empty:SetPoint("CENTER")
-empty:SetText(L["No addon's button yet"])
+empty:SetText(L["No buttons in the drawer."])
 
 -- The gathered buttons shown (an addon may hide its own), in a grid.
 function ns.layout()
@@ -171,7 +171,7 @@ end
 local function count()
   local n = 0
   for _, e in ipairs(ns.buttons()) do
-    if e.held then n = n + 1 end
+    if e.held and e.shown then n = n + 1 end
   end
   return n
 end
@@ -217,7 +217,8 @@ function ns.createKey()
     GameTooltip:AddLine("Keyring")
     local n = count()
     GameTooltip:AddLine(
-      n == 0 and L["No buttons gathered yet"] or n == 1 and L["1 button"] or L["%d buttons"]:format(n),
+      -- (for translators: "%d buttons" counts the buttons in the drawer)
+      n == 0 and L["No buttons in the drawer."] or n == 1 and L["1 button"] or L["%d buttons"]:format(n),
       1,
       1,
       1

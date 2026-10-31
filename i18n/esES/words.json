@@ -2,17 +2,15 @@
   "%d buttons": "%d botones",
   "%s:": "%s:",
   "(hidden by its addon)": "(oculto por su addon)",
-  "/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place).": "/keyring abre el cajón. /keyring settings abre las opciones. /keyring list muestra los botones. /keyring reset devuelve la llave a su posición inicial.",
+  "/keyring opens or closes the drawer and /keyring settings opens the settings. /keyring list lists the buttons in chat and /keyring reset puts the key back in its place.": "/keyring abre el cajón. /keyring settings abre las opciones. /keyring list muestra los botones. /keyring reset devuelve la llave a su posición inicial.",
   "1 button": "1 botón",
+  "Buttons that may be covered by the drawer (drawer layer %1$s %2$d): %3$s.": "Cubiertos por el cajón (%1$s %2$d): %3$s.",
   "Click to open the drawer, right-click for the settings. Drag to move the key.": "Clic para abrir el cajón, clic derecho para ver las opciones. Arrastra la llave para moverla.",
-  "Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it.": "La llave abre un cajón con los botones del minimapa de tus addons. Desmarca un botón para dejarlo en el minimapa, donde lo colocó su addon.",
   "In the drawer: %s.": "En el cajón: %s.",
   "Left on the minimap: %s.": "En el minimapa: %s.",
-  "No addon's button yet": "No hay botones para mostrar",
   "No addon's minimap button found yet.": "Aún no se ha encontrado ningún botón de addon en el minimapa.",
-  "No buttons gathered yet": "Aún no hay botones en el cajón",
   "No buttons in the drawer.": "No hay botones en el cajón.",
   "The key is back in its place.": "La llave vuelve a su sitio.",
-  "The settings page needs the game's Options. /keyring list shows the buttons.": "Las opciones de Keyring no están disponibles en este cliente. Usa /keyring list para ver los botones.",
-  "Under the drawer (%s %d): %s.": "Cubiertos por el cajón (%s %d): %s."
+  "The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it.": "La llave abre un cajón con los botones del minimapa de tus addons. Desmarca un botón para dejarlo en el minimapa, donde lo colocó su addon.",
+  "The settings aren't available in this game client. /keyring list shows the buttons.": "Las opciones de Keyring no están disponibles en este cliente. Usa /keyring list para ver los botones."
 }

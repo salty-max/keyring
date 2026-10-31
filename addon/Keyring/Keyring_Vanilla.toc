@@ -1,6 +1,6 @@
 ## Interface: 11509
 ## Title: Keyring
-## Notes: Collect your addon minimap buttons in a drawer behind one key. Choose which buttons to gather and which to leave on the minimap.
+## Notes: Gather your addons' minimap buttons in a drawer behind one key. Choose which to gather and which to leave on the minimap.
 ## Notes-frFR: Rangez les boutons de vos addons autour de la minicarte dans un tiroir derrière une seule clé. Choisissez ceux à ranger et ceux à laisser sur la minicarte.
 ## Notes-deDE: Sammelt die Minikarten-Buttons deiner Addons in einer Schublade hinter einem einzigen Schlüssel. Wähle, welche Buttons gesammelt werden und welche auf der Minikarte bleiben.
 ## Notes-esES: Reúne los botones del minimapa de tus addons en un cajón que se abre con una sola llave. Elige cuáles guardar y cuáles dejar en el minimapa.

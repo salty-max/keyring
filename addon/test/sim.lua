@@ -267,7 +267,7 @@ do
   local said = table.concat(G.chat, "\n")
   check(
     "… one under it named, with what holds it",
-    said:find("Under the drawer %(HIGH %d+%): Questie %(MEDIUM %d+%)%."),
+    said:find("Buttons that may be covered by the drawer %(drawer layer HIGH %d+%): Questie %(MEDIUM %d+%)%."),
     said
   )
   ns.lift(questie)
@@ -366,7 +366,7 @@ check("and counted shown", after.SecondWindMinimapButton and after.SecondWindMin
 local listed, listErr = pcall(G.slash, "list")
 check("/keyring list with secret strata and level: no error", listed, listErr)
 for _, line in ipairs(G.chat) do
-  check("not listed under the drawer", not line:find("Under the drawer", 1, true), line)
+  check("not listed under the drawer", not line:find("covered by the drawer", 1, true), line)
 end
 local opened, openErr = pcall(G.click, KeyringMinimapButton)
 check("the drawer opens", opened and KeyringDrawer:IsShown(), openErr)
@@ -518,11 +518,11 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   )
   ns.lift(second)
   ns.setLeft("YonderMinimapButton", true)
-  eq(locale .. ": empty tooltip", tooltip(), "Aún no hay botones en el cajón")
+  eq(locale .. ": empty tooltip", tooltip(), "No hay botones en el cajón.")
   G.slash("")
   local empty
   for _, region in ipairs({ KeyringDrawer:GetRegions() }) do
-    if region:GetText() == "No hay botones para mostrar" then empty = region end
+    if region:GetText() == "No hay botones en el cajón." then empty = region end
   end
   check(locale .. ": empty drawer message", empty and empty:IsShown())
   KeyringSettings.angle = 30

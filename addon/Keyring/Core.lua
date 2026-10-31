@@ -22,6 +22,19 @@ function ns.translate(t)
   end
 end
 
+-- A sentence's blanks filled in, in the order its language puts them: the
+-- blanks are numbered ("%1$s, %2$d") so a translation may move them, which
+-- LuaJIT's format can't read (the game's can). Second Wind's ns.fmt.
+function ns.fmt(s, ...)
+  if not s:find("%%%d%$") then return s:format(...) end
+  local args, order = { ... }, {}
+  local plain = s:gsub("%%(%d)%$", function(i)
+    table.insert(order, args[tonumber(i)])
+    return "%"
+  end)
+  return plain:format(unpack(order))
+end
+
 ns.ANGLE = 190
 
 -- A value of another addon's frame (its strata, level, parent, size), nil when
@@ -91,8 +104,15 @@ SlashCmdList.KEYRING = function(msg)
     ns.say(#held == 0 and L["No buttons in the drawer."] or L["In the drawer: %s."]:format(table.concat(held, ", ")))
     if #left > 0 then ns.say(L["Left on the minimap: %s."]:format(table.concat(left, ", "))) end
     if #under > 0 then
+      -- (for translators: the layer names, HIGH and the like, stay English, the
+      -- numbers are the drawer's own layer and level)
       ns.say(
-        L["Under the drawer (%s %d): %s."]:format(d:GetFrameStrata(), d:GetFrameLevel(), table.concat(under, ", "))
+        ns.fmt(
+          L["Buttons that may be covered by the drawer (drawer layer %1$s %2$d): %3$s."],
+          d:GetFrameStrata(),
+          d:GetFrameLevel(),
+          table.concat(under, ", ")
+        )
       )
     end
   elseif msg == "reset" then
@@ -100,6 +120,8 @@ SlashCmdList.KEYRING = function(msg)
     ns.placeKey()
     ns.say(L["The key is back in its place."])
   else
-    ns.say(L["/keyring opens the drawer. /keyring settings, list (the buttons), reset (the key's place)."])
+    ns.say(
+      L["/keyring opens or closes the drawer and /keyring settings opens the settings. /keyring list lists the buttons in chat and /keyring reset puts the key back in its place."]
+    )
   end
 end

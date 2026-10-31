@@ -20,7 +20,7 @@ about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 about:SetPoint("RIGHT", -16, 0)
 about:SetJustifyH("LEFT")
 about:SetText(
-  L["Every addon's minimap button, kept in the drawer the key opens. Untick a button to leave it on the minimap where its addon put it."]
+  L["The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it."]
 )
 
 local scroll = CreateFrame("ScrollFrame", "KeyringOptionsScroll", panel, "UIPanelScrollFrameTemplate")
@@ -72,6 +72,7 @@ function ns.refreshOptions()
     else
       r.icon:Hide()
     end
+    -- (for translators: a note after a button's name, "its" is the button)
     r.note:SetText(not e.shown and L["(hidden by its addon)"] or "")
     r:Show()
   end
@@ -91,7 +92,7 @@ function ns.openOptions()
   if category then
     Settings.OpenToCategory(category:GetID())
   else
-    ns.say(L["The settings page needs the game's Options. /keyring list shows the buttons."])
+    ns.say(L["The settings aren't available in this game client. /keyring list shows the buttons."])
   end
 end
 
