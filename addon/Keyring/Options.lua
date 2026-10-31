@@ -92,7 +92,7 @@ function ns.openOptions()
   if category then
     Settings.OpenToCategory(category:GetID())
   else
-    ns.say(L["The settings aren't available in this game client. /keyring list shows the buttons."])
+    ns.say(L["The settings aren't available in this game client. /keyring list lists the buttons."])
   end
 end
 

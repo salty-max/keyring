@@ -12,5 +12,5 @@
   "No buttons in the drawer.": "Aucun bouton dans le tiroir.",
   "The key is back in its place.": "La clé a retrouvé sa place.",
   "The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it.": "Le bouton de minicarte de chaque addon, rangé dans le tiroir qu'ouvre la clé. Décochez un bouton pour le laisser sur la minicarte, là où son addon l'a placé.",
-  "The settings aren't available in this game client. /keyring list shows the buttons.": "La page des réglages a besoin des Options du jeu. /keyring list affiche les boutons."
+  "The settings aren't available in this game client. /keyring list lists the buttons.": "La page des réglages a besoin des Options du jeu. /keyring list affiche les boutons."
 }

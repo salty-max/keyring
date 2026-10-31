@@ -17,6 +17,6 @@ ns.translate({
     ["No buttons in the drawer."] = "Keine Buttons in der Schublade.",
     ["The key is back in its place."] = "Der Schlüssel ist wieder an seinem Platz.",
     ["The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it."] = "Der Schlüssel öffnet eine Schublade mit den Minikarten-Buttons deiner Addons. Entferne das Häkchen bei einem Button, damit er auf der Minikarte bleibt, wo sein Addon ihn platziert hat.",
-    ["The settings aren't available in this game client. /keyring list shows the buttons."] = "Die Einstellungsseite ist in diesem Client nicht verfügbar. /keyring list zeigt die Buttons.",
+    ["The settings aren't available in this game client. /keyring list lists the buttons."] = "Die Einstellungsseite ist in diesem Client nicht verfügbar. /keyring list zeigt die Buttons.",
   },
 })

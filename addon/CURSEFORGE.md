@@ -3,7 +3,7 @@
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
 Gather your addons' minimap buttons in a drawer behind one key. Choose which to gather and which to leave on the minimap. -->
 
-Keyring gathers your addons' minimap buttons into a drawer, leaving one key button on the minimap. Click the key to open the drawer, and close it with Escape, another click on the key or a click elsewhere.
+Keyring gathers your addons' minimap buttons into a drawer, leaving one key on the minimap. Click the key to open the drawer, and close it with Escape, another click on the key or a click elsewhere.
 
 ## Using Keyring
 
@@ -14,7 +14,7 @@ Keyring gathers your addons' minimap buttons into a drawer, leaving one key butt
 
 The drawer arranges buttons in a grid and follows your minimap's scale. A menu opened from a button in the drawer leaves the drawer open.
 
-Keyring finds buttons made with LibDBIcon, which most addons use, and other addon buttons it recognises on the minimap. Tracking, mail, the clock, zoom controls, Forever's addon compartment, map pins and anything over twice the size of a minimap button stay where they are. Buttons hidden by their own addon stay hidden. Protected buttons are left in place because the game restricts moving or hiding them during combat.
+Keyring finds buttons made with LibDBIcon, which most addons use, and other addon buttons it recognises on the minimap. The tracking button, mail, the clock, zoom controls, Forever's addon compartment, map pins and anything over twice the size of a minimap button stay where they are. Buttons hidden by their own addon stay hidden. Protected buttons are left in place because the game restricts moving or hiding them during combat.
 
 The key uses the game's minimap ring and highlight, with a painted keyring icon. Keyring works as soon as you install it.
 
@@ -22,7 +22,7 @@ The key uses the game's minimap ring and highlight, with a painted keyring icon.
 
 - `/keyring` opens or closes the drawer.
 - `/keyring settings` opens the settings.
-- `/keyring list` lists in chat the buttons in the drawer and those left on the minimap.
+- `/keyring list` lists the buttons in the drawer and those left on the minimap, in chat.
 - `/keyring reset` puts the key back in its place.
 
 ## Compatibility

@@ -1,11 +1,12 @@
 # Keyring
 
-Keyring gathers your addons' minimap buttons into a drawer, leaving one key
-button on the minimap. Click the key to open the drawer, and close it with
-Escape, another click on the key or a click elsewhere.
+Keyring gathers your addons' minimap buttons into a drawer, leaving one key on
+the minimap. Click the key to open the drawer, and close it with Escape,
+another click on the key or a click elsewhere.
 
 One download covers Classic Era, Hardcore, Season of Discovery and World of
-Warcraft: Forever. Keyring speaks English, French, German and Spanish.
+Warcraft: Forever. Keyring speaks English, French, German and Spanish. Other
+clients get English.
 
 ## Using Keyring
 
@@ -18,7 +19,7 @@ The drawer arranges buttons in a grid and follows your minimap's scale.
 A menu opened from a button in the drawer leaves the drawer open.
 
 Keyring finds buttons made with LibDBIcon, which most addons use, and other
-addon buttons it recognises on the minimap. Tracking, mail, the clock, zoom
+addon buttons it recognises on the minimap. The tracking button, mail, the clock, zoom
 controls, Forever's addon compartment, map pins and anything over twice the
 size of a minimap button stay where they are. Buttons hidden by their own addon stay
 hidden. Protected buttons are left in place because the game restricts moving
@@ -31,7 +32,7 @@ icon. Keyring works as soon as you install it.
 
 - `/keyring` opens or closes the drawer.
 - `/keyring settings` opens the settings.
-- `/keyring list` lists in chat the buttons in the drawer and those left on the minimap.
+- `/keyring list` lists the buttons in the drawer and those left on the minimap, in chat.
 - `/keyring reset` puts the key back in its place.
 
 ## Download

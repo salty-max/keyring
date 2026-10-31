@@ -17,6 +17,6 @@ ns.translate({
     ["No buttons in the drawer."] = "No hay botones en el cajón.",
     ["The key is back in its place."] = "La llave vuelve a su sitio.",
     ["The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it."] = "La llave abre un cajón con los botones del minimapa de tus addons. Desmarca un botón para dejarlo en el minimapa, donde lo colocó su addon.",
-    ["The settings aren't available in this game client. /keyring list shows the buttons."] = "Las opciones de Keyring no están disponibles en este cliente. Usa /keyring list para ver los botones.",
+    ["The settings aren't available in this game client. /keyring list lists the buttons."] = "Las opciones de Keyring no están disponibles en este cliente. Usa /keyring list para ver los botones.",
   },
 })
