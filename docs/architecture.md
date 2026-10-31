@@ -50,6 +50,17 @@ stays there).
   flagged until reviewed by a native reader. Neutral Spanish with tú, one
   esES catalog shared by esMX. Use minimapa, botón, cajón, llave and opciones.
   Keep addon names and executable commands unchanged.
+- The words' terms (English audit, 31 October 2026): **gather** is the action,
+  **in the drawer** and **left on the minimap** the two states of a button,
+  **the settings** the window (`/keyring settings`, the button list inside
+  it), **untick** the checkbox. One empty line for the drawer, its tooltip and
+  `/keyring list` ("No buttons in the drawer."). A line with two blanks or
+  more numbers them (`%1$s`, `%2$d`) and goes through `ns.fmt` (LuaJIT's
+  format can't read them, the game's can), with a comment for translators
+  above it. Keyring gathers no protected button, none over 64px, none the game
+  made, no map pin and not Forever's addon compartment (nor an unnamed frame,
+  which no player sees): the README and the store page name the visible ones
+  in the same words, "over twice the size of a minimap button" for the 64px.
 - `addon/test/game.lua`: the fake game (frames, the minimap and the game's own
   buttons with secure names, LibStub and LibDBIcon r56 as it makes its buttons, strata and level fixed,
   C_Timer, the Settings API, the mouse); `addon/test/sim.lua` plays it
