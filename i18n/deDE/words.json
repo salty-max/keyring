@@ -2,15 +2,15 @@
   "%d buttons": "%d Buttons",
   "%s:": "%s:",
   "(hidden by its addon)": "(von seinem Addon ausgeblendet)",
-  "/keyring opens or closes the drawer and /keyring settings opens the settings. /keyring list lists the buttons in chat and /keyring reset puts the key back in its place.": "/keyring öffnet die Schublade. /keyring settings öffnet die Einstellungen. /keyring list zeigt die Buttons. /keyring reset setzt den Schlüssel an seine Ausgangsposition zurück.",
+  "/keyring opens or closes the drawer. /keyring settings opens the settings. /keyring list shows the buttons in chat. /keyring reset puts the key back in its place.": "/keyring öffnet die Schublade. /keyring settings öffnet die Einstellungen. /keyring list zeigt die Buttons. /keyring reset setzt den Schlüssel an seine Ausgangsposition zurück.",
   "1 button": "1 Button",
-  "Buttons that may be covered by the drawer (drawer layer %1$s %2$d): %3$s.": "Von der Schublade verdeckt (%1$s %2$d): %3$s.",
+  "Buttons the drawer may cover (the drawer at %1$s %2$d): %3$s.": "Von der Schublade verdeckt (%1$s %2$d): %3$s.",
   "Click to open the drawer, right-click for the settings. Drag to move the key.": "Linksklick öffnet die Schublade, Rechtsklick die Einstellungen. Ziehen, um den Schlüssel zu verschieben.",
   "In the drawer: %s.": "In der Schublade: %s.",
   "Left on the minimap: %s.": "Auf der Minikarte belassen: %s.",
-  "No addon's minimap button found yet.": "Noch kein Minikarten-Button eines Addons gefunden.",
   "No buttons in the drawer.": "Keine Buttons in der Schublade.",
+  "No minimap buttons found yet.": "Noch kein Minikarten-Button eines Addons gefunden.",
   "The key is back in its place.": "Der Schlüssel ist wieder an seinem Platz.",
   "The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it.": "Der Schlüssel öffnet eine Schublade mit den Minikarten-Buttons deiner Addons. Entferne das Häkchen bei einem Button, damit er auf der Minikarte bleibt, wo sein Addon ihn platziert hat.",
-  "The settings aren't available in this game client. /keyring list lists the buttons.": "Die Einstellungsseite ist in diesem Client nicht verfügbar. /keyring list zeigt die Buttons."
+  "The settings aren't available in this game client. /keyring list shows the buttons in chat.": "Die Einstellungsseite ist in diesem Client nicht verfügbar. /keyring list zeigt die Buttons."
 }

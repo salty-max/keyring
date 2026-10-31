@@ -257,7 +257,16 @@ eq("one made a moment after the login: gathered", slow:GetParent(), drawer)
 G.chat = {}
 G.slash("list")
 check("/keyring list", G.chat[1] and G.chat[1]:find("In the drawer: AtlasLoot %[Core%]"), G.chat[1])
-check("… no button under the drawer", not table.concat(G.chat, "\n"):find("under the drawer"))
+check("… no button under the drawer", not table.concat(G.chat, "\n"):find("the drawer may cover"))
+wind:Hide()
+G.chat = {}
+G.slash("list")
+check(
+  "… a hidden one said so",
+  G.chat[1] and G.chat[1]:find("Second Wind %(SecondWindMinimapButton%) %(hidden by its addon%)"),
+  G.chat[1]
+)
+wind:Show()
 do
   local own = getmetatable(questie).__index
   own.SetFixedFrameStrata(questie, false)
@@ -267,7 +276,7 @@ do
   local said = table.concat(G.chat, "\n")
   check(
     "… one under it named, with what holds it",
-    said:find("Buttons that may be covered by the drawer %(drawer layer HIGH %d+%): Questie %(MEDIUM %d+%)%."),
+    said:find("Buttons the drawer may cover %(the drawer at HIGH %d+%): Questie %(MEDIUM %d+%)%."),
     said
   )
   ns.lift(questie)
@@ -366,7 +375,7 @@ check("and counted shown", after.SecondWindMinimapButton and after.SecondWindMin
 local listed, listErr = pcall(G.slash, "list")
 check("/keyring list with secret strata and level: no error", listed, listErr)
 for _, line in ipairs(G.chat) do
-  check("not listed under the drawer", not line:find("covered by the drawer", 1, true), line)
+  check("not listed under the drawer", not line:find("the drawer may cover", 1, true), line)
 end
 local opened, openErr = pcall(G.click, KeyringMinimapButton)
 check("the drawer opens", opened and KeyringDrawer:IsShown(), openErr)

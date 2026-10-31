@@ -92,7 +92,10 @@ SlashCmdList.KEYRING = function(msg)
     local held, left, under = {}, {}, {}
     local d = ns.drawer
     for _, e in ipairs(ns.buttons()) do
-      table.insert(e.held and held or left, ("%s (%s)"):format(e.label, e.name))
+      local line = ("%s (%s)"):format(e.label, e.name)
+      -- (one its addon hides, as the settings page says)
+      if not e.shown then line = line .. " " .. L["(hidden by its addon)"] end
+      table.insert(e.held and held or left, line)
       -- (one the drawer would cover, which should never be: what holds it)
       -- (a strata or a level the game hides is skipped)
       local b = e.button
@@ -108,7 +111,7 @@ SlashCmdList.KEYRING = function(msg)
       -- numbers are the drawer's own layer and level)
       ns.say(
         ns.fmt(
-          L["Buttons that may be covered by the drawer (drawer layer %1$s %2$d): %3$s."],
+          L["Buttons the drawer may cover (the drawer at %1$s %2$d): %3$s."],
           d:GetFrameStrata(),
           d:GetFrameLevel(),
           table.concat(under, ", ")
@@ -121,7 +124,7 @@ SlashCmdList.KEYRING = function(msg)
     ns.say(L["The key is back in its place."])
   else
     ns.say(
-      L["/keyring opens or closes the drawer and /keyring settings opens the settings. /keyring list lists the buttons in chat and /keyring reset puts the key back in its place."]
+      L["/keyring opens or closes the drawer. /keyring settings opens the settings. /keyring list shows the buttons in chat. /keyring reset puts the key back in its place."]
     )
   end
 end

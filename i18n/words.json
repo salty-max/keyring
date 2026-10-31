@@ -2,15 +2,15 @@
   "%d buttons": "",
   "%s:": "",
   "(hidden by its addon)": "",
-  "/keyring opens or closes the drawer and /keyring settings opens the settings. /keyring list lists the buttons in chat and /keyring reset puts the key back in its place.": "",
+  "/keyring opens or closes the drawer. /keyring settings opens the settings. /keyring list shows the buttons in chat. /keyring reset puts the key back in its place.": "",
   "1 button": "",
-  "Buttons that may be covered by the drawer (drawer layer %1$s %2$d): %3$s.": "",
+  "Buttons the drawer may cover (the drawer at %1$s %2$d): %3$s.": "",
   "Click to open the drawer, right-click for the settings. Drag to move the key.": "",
   "In the drawer: %s.": "",
   "Left on the minimap: %s.": "",
-  "No addon's minimap button found yet.": "",
   "No buttons in the drawer.": "",
+  "No minimap buttons found yet.": "",
   "The key is back in its place.": "",
   "The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it.": "",
-  "The settings aren't available in this game client. /keyring list lists the buttons.": ""
+  "The settings aren't available in this game client. /keyring list shows the buttons in chat.": ""
 }
