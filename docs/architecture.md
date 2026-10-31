@@ -54,7 +54,10 @@ stays there).
   **in the drawer** and **left on the minimap** the two states of a button,
   **the settings** the window (`/keyring settings`, the button list inside
   it), **untick** the checkbox. One empty line for the drawer, its tooltip and
-  `/keyring list` ("No buttons in the drawer."). A line with two blanks or
+  `/keyring list` ("No buttons in the drawer."), and the tooltip counts the
+  buttons the drawer shows. `/keyring list` marks a button its addon hides
+  with the settings page's "(hidden by its addon)". One sentence per
+  command in the usage line. A line with two blanks or
   more numbers them (`%1$s`, `%2$d`) and goes through `ns.fmt` (LuaJIT's
   format can't read them, the game's can), with a comment for translators
   above it. Keyring gathers no protected button, none over 64px, none the game

@@ -11,19 +11,20 @@ clients get English.
 ## Using Keyring
 
 - **Left-click** the key to open or close the drawer.
-- **Right-click** for the settings.
+- **Right-click** the key for the settings.
 - **Drag** the key to move it around the minimap.
 - **Untick a button** in the settings to leave it on the minimap instead.
 
-The drawer arranges buttons in a grid and follows your minimap's scale.
-A menu opened from a button in the drawer leaves the drawer open.
+The drawer arranges buttons in a grid and follows your minimap's scale. The
+drawer stays open while you use a menu opened from one of its buttons.
 
 Keyring finds buttons made with LibDBIcon, which most addons use, and other
-addon buttons it recognises on the minimap. The tracking button, mail, the clock, zoom
-controls, Forever's addon compartment, map pins and anything over twice the
-size of a minimap button stay where they are. Buttons hidden by their own addon stay
-hidden. Protected buttons are left in place because the game restricts moving
-or hiding them during combat.
+addons' buttons on the minimap that it recognises by name. The game's own
+buttons stay where they are: tracking, mail, the clock, the zoom buttons and
+Forever's addon compartment. So do map pins and anything over twice the size
+of a minimap button. Buttons hidden by their own addon stay hidden. Protected
+buttons are left in place because the game restricts moving or hiding them
+during combat.
 
 The key uses the game's minimap ring and highlight, with a painted keyring
 icon. Keyring works as soon as you install it.
@@ -32,7 +33,8 @@ icon. Keyring works as soon as you install it.
 
 - `/keyring` opens or closes the drawer.
 - `/keyring settings` opens the settings.
-- `/keyring list` lists the buttons in the drawer and those left on the minimap, in chat.
+- `/keyring list` shows in chat the buttons in the drawer and those left on the
+  minimap.
 - `/keyring reset` puts the key back in its place.
 
 ## Download
@@ -41,7 +43,7 @@ Get it from [CurseForge](https://www.curseforge.com/projects/1739386),
 [Wago](https://addons.wago.io/addons/ANz7JV64) or
 [GitHub releases](https://github.com/salty-max/keyring/releases).
 
-Keyring needs no other addon. It gathers the minimap buttons of most addons.
+Keyring needs no other addon.
 The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 
 ## Development
