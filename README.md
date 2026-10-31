@@ -1,38 +1,38 @@
 # Keyring
 
-Keyring collects your World of Warcraft addon minimap buttons into a drawer,
-leaving one key button on the minimap. Click it to reach your addons, then
-close it with Escape, another click on the key or a click elsewhere.
+Keyring gathers your addons' minimap buttons into a drawer, leaving one key
+button on the minimap. Click the key to open the drawer, and close it with
+Escape, another click on the key or a click elsewhere.
 
-For Classic Era, Hardcore, Season of Discovery and World of Warcraft:
-Forever. One download covers all of them. In English, French, German and Spanish.
+One download covers Classic Era, Hardcore, Season of Discovery and World of
+Warcraft: Forever. Keyring speaks English, French, German and Spanish.
 
 ## Using Keyring
 
 - **Left-click** the key to open or close the drawer.
-- **Right-click** for settings.
+- **Right-click** for the settings.
 - **Drag** the key to move it around the minimap.
-- **Untick a button** in settings to leave it on the minimap instead.
+- **Untick a button** in the settings to leave it on the minimap instead.
 
 The drawer arranges buttons in a grid and follows your minimap's scale.
-Clicking a menu opened by an addon button keeps the drawer open so you can
-use it.
+A menu opened from a button in the drawer leaves the drawer open.
 
-Keyring finds buttons made with LibDBIcon and other addon buttons it
-recognises on the minimap. Tracking, mail, the clock, zoom controls,
-Forever's addon compartment and map pins stay where they are. Hidden buttons
-stay hidden. Protected buttons are left in place because the game
-restricts moving or hiding them during combat.
+Keyring finds buttons made with LibDBIcon, which most addons use, and other
+addon buttons it recognises on the minimap. Tracking, mail, the clock, zoom
+controls, Forever's addon compartment, map pins and anything over twice the
+size of a minimap button stay where they are. Buttons hidden by their own addon stay
+hidden. Protected buttons are left in place because the game restricts moving
+or hiding them during combat.
 
 The key uses the game's minimap ring and highlight, with a painted keyring
-icon. It works as soon as you install it.
+icon. Keyring works as soon as you install it.
 
 ## Commands
 
 - `/keyring` opens or closes the drawer.
-- `/keyring settings` opens the button list.
-- `/keyring list` prints gathered and excluded buttons in chat.
-- `/keyring reset` returns the key to its default position.
+- `/keyring settings` opens the settings.
+- `/keyring list` lists in chat the buttons in the drawer and those left on the minimap.
+- `/keyring reset` puts the key back in its place.
 
 ## Download
 
@@ -40,8 +40,7 @@ Get it from [CurseForge](https://www.curseforge.com/projects/1739386),
 [Wago](https://addons.wago.io/addons/ANz7JV64) or
 [GitHub releases](https://github.com/salty-max/keyring/releases).
 
-Keyring works independently and gathers the buttons of any addon, the
-family's included.
+Keyring needs no other addon. It gathers the minimap buttons of most addons.
 The full store description is in [addon/CURSEFORGE.md](addon/CURSEFORGE.md).
 
 ## Development
