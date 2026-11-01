@@ -5,7 +5,7 @@ the minimap. Click the key to open the drawer, and close it with Escape,
 another click on the key or a click elsewhere.
 
 One download covers Classic Era, Hardcore, Season of Discovery and World of
-Warcraft: Forever. Keyring speaks English, French, German and Spanish. Other
+Warcraft: Forever. Keyring speaks English and French. Other
 clients get English.
 
 ## Using Keyring

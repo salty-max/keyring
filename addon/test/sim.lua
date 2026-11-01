@@ -419,138 +419,154 @@ eq("a word no translation has: English", ns.L["Not a word Keyring says"], "Not a
 check("Hearthtale gathered", h2:GetParent() == KeyringDrawer)
 
 -- 14. A German client: its own file too.
-G = dofile("addon/test/game.lua")
-G.locale = "deDE"
-KeyringSettings = nil
-G.button("HearthtaleMinimapButton", 200)
-ns = G.load()
-G.login()
-GameTooltip._lines = {}
-KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
-eq("the key's tooltip in German", GameTooltip._lines[2], "1 Button")
-check("… its help in German", GameTooltip._lines[3]:find("^Linksklick öffnet die Schublade"), GameTooltip._lines[3])
+if dofile("addon/test/held.lua")("deDE") then
+  print("skipped: deDE held back (HIDDEN_LOCALES)")
+else
+  G = dofile("addon/test/game.lua")
+  G.locale = "deDE"
+  KeyringSettings = nil
+  G.button("HearthtaleMinimapButton", 200)
+  ns = G.load()
+  G.login()
+  GameTooltip._lines = {}
+  KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
+  eq("the key's tooltip in German", GameTooltip._lines[2], "1 Button")
+  check(
+    "… its help in German",
+    GameTooltip._lines[3]:find("^Linksklick öffnet die Schublade"),
+    GameTooltip._lines[3]
+  )
 
--- The German help must retain executable commands and the same checkbox
--- direction: checked gathers a button, unchecked leaves it on the minimap.
-G.slash("help")
-check(
-  "German help: full reset command",
-  G.chat[#G.chat]:find("/keyring reset setzt den Schlüssel", 1, true),
-  G.chat[#G.chat]
-)
-G.click(KeyringMinimapButton, "RightButton")
-row = rowOf("HearthtaleMinimapButton")
-check("German settings: gathered is checked", row and row.check:GetChecked())
-row.check:SetChecked(false)
-row.check._scripts.OnClick(row.check)
-G.slash("list")
-check(
-  "German settings: unchecked is left on the minimap",
-  G.chat[#G.chat]:find("Auf der Minikarte belassen: Hearthtale", 1, true),
-  G.chat[#G.chat]
-)
-row.check:SetChecked(true)
-row.check._scripts.OnClick(row.check)
-G.slash("list")
-check("German list: gathered again", G.chat[#G.chat]:find("In der Schublade: Hearthtale", 1, true), G.chat[#G.chat])
--- A new session without the settings API exercises the actual fallback.
-G = dofile("addon/test/game.lua")
-G.locale = "deDE"
-Settings = nil
-KeyringSettings = nil
-ns = G.load()
-G.login()
-G.slash("settings")
-check(
-  "German settings fallback: unavailable, with a working command",
-  G.chat[#G.chat]:find("in diesem Client nicht verfügbar. /keyring list", 1, true),
-  G.chat[#G.chat]
-)
+  -- The German help must retain executable commands and the same checkbox
+  -- direction: checked gathers a button, unchecked leaves it on the minimap.
+  G.slash("help")
+  check(
+    "German help: full reset command",
+    G.chat[#G.chat]:find("/keyring reset setzt den Schlüssel", 1, true),
+    G.chat[#G.chat]
+  )
+  G.click(KeyringMinimapButton, "RightButton")
+  row = rowOf("HearthtaleMinimapButton")
+  check("German settings: gathered is checked", row and row.check:GetChecked())
+  row.check:SetChecked(false)
+  row.check._scripts.OnClick(row.check)
+  G.slash("list")
+  check(
+    "German settings: unchecked is left on the minimap",
+    G.chat[#G.chat]:find("Auf der Minikarte belassen: Hearthtale", 1, true),
+    G.chat[#G.chat]
+  )
+  row.check:SetChecked(true)
+  row.check._scripts.OnClick(row.check)
+  G.slash("list")
+  check("German list: gathered again", G.chat[#G.chat]:find("In der Schublade: Hearthtale", 1, true), G.chat[#G.chat])
+  -- A new session without the settings API exercises the actual fallback.
+  G = dofile("addon/test/game.lua")
+  G.locale = "deDE"
+  Settings = nil
+  KeyringSettings = nil
+  ns = G.load()
+  G.login()
+  G.slash("settings")
+  check(
+    "German settings fallback: unavailable, with a working command",
+    G.chat[#G.chat]:find("in diesem Client nicht verfügbar. /keyring list", 1, true),
+    G.chat[#G.chat]
+  )
+end
 
 -- 15. Both Spanish clients load the shared catalog through their own TOC
 -- locale file. Exercise player actions so counts, checkbox direction and
 -- formatted chat messages are checked after the real translation loader.
 for _, locale in ipairs({ "esES", "esMX" }) do
-  G = dofile("addon/test/game.lua")
-  G.locale = locale
-  KeyringSettings = nil
-  local first = G.button("HearthtaleMinimapButton", 200)
-  local second = G.button("YonderMinimapButton", 225)
-  ns = G.load()
-  G.login()
-  local function tooltip()
-    KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
-    return GameTooltip._lines[2]
+  if dofile("addon/test/held.lua")(locale) then
+    print("skipped: " .. locale .. " held back (HIDDEN_LOCALES)")
+  else
+    G = dofile("addon/test/game.lua")
+    G.locale = locale
+    KeyringSettings = nil
+    local first = G.button("HearthtaleMinimapButton", 200)
+    local second = G.button("YonderMinimapButton", 225)
+    ns = G.load()
+    G.login()
+    local function tooltip()
+      KeyringMinimapButton:GetScript("OnEnter")(KeyringMinimapButton)
+      return GameTooltip._lines[2]
+    end
+    eq(locale .. ": plural tooltip", tooltip(), "2 botones")
+    check(locale .. ": translated tooltip help", GameTooltip._lines[3]:find("Arrastra la llave para moverla.", 1, true))
+    G.slash("help")
+    local help = G.chat[#G.chat]
+    for _, command in ipairs({
+      "/keyring abre",
+      "/keyring settings abre",
+      "/keyring list muestra",
+      "/keyring reset devuelve",
+    }) do
+      check(locale .. ": executable help command " .. command, help:find(command, 1, true), help)
+    end
+    G.click(KeyringMinimapButton, "RightButton")
+    local panel = Settings.categories[1].frame
+    local about
+    for _, region in ipairs({ panel:GetRegions() }) do
+      if region:GetText() and region:GetText():find("Desmarca un botón", 1, true) then about = region:GetText() end
+    end
+    check(
+      locale .. ": settings explain unchecking",
+      about and about:find("para dejarlo en el minimapa", 1, true),
+      about
+    )
+    row = rowOf("HearthtaleMinimapButton")
+    eq(locale .. ": gathered is checked", row.check:GetChecked(), true)
+    second:Hide()
+    eq(locale .. ": hidden status", rowOf("YonderMinimapButton").note:GetText(), "(oculto por su addon)")
+    second:Show()
+    row.check:SetChecked(false)
+    row.check._scripts.OnClick(row.check)
+    eq(locale .. ": unchecked button on minimap", first:GetParent(), Minimap)
+    G.chat = {}
+    G.slash("list")
+    check(locale .. ": gathered list", G.chat[1]:find("En el cajón: Yonder", 1, true), G.chat[1])
+    check(locale .. ": excluded list", G.chat[2]:find("En el minimapa: Hearthtale", 1, true), G.chat[2])
+    eq(locale .. ": singular tooltip", tooltip(), "1 botón")
+    -- The diagnostic has three typed placeholders. Internal strata tokens
+    -- remain unchanged even though the surrounding message is translated.
+    local own = getmetatable(second).__index
+    own.SetFixedFrameStrata(second, false)
+    own.SetFrameStrata(second, "MEDIUM")
+    G.slash("list")
+    check(
+      locale .. ": translated diagnostic with strata and levels",
+      G.chat[#G.chat]:find("Cubiertos por el cajón %(HIGH %d+%): Yonder %(MEDIUM %d+%)%."),
+      G.chat[#G.chat]
+    )
+    ns.lift(second)
+    ns.setLeft("YonderMinimapButton", true)
+    eq(locale .. ": empty tooltip", tooltip(), "No hay botones en el cajón.")
+    G.slash("")
+    local empty
+    for _, region in ipairs({ KeyringDrawer:GetRegions() }) do
+      if region:GetText() == "No hay botones en el cajón." then empty = region end
+    end
+    check(locale .. ": empty drawer message", empty and empty:IsShown())
+    KeyringSettings.angle = 30
+    G.slash("reset")
+    eq(locale .. ": reset action", KeyringSettings.angle, 190)
+    check(locale .. ": reset message", G.chat[#G.chat]:find("La llave vuelve a su sitio.", 1, true))
+    -- Missing Settings API: the translated advice still gives a usable command.
+    G = dofile("addon/test/game.lua")
+    G.locale = locale
+    KeyringSettings = nil
+    Settings = nil
+    ns = G.load()
+    G.login()
+    G.slash("settings")
+    check(
+      locale .. ": settings fallback",
+      G.chat[#G.chat]:find("Usa /keyring list para ver los botones.", 1, true),
+      G.chat[#G.chat]
+    )
   end
-  eq(locale .. ": plural tooltip", tooltip(), "2 botones")
-  check(locale .. ": translated tooltip help", GameTooltip._lines[3]:find("Arrastra la llave para moverla.", 1, true))
-  G.slash("help")
-  local help = G.chat[#G.chat]
-  for _, command in ipairs({
-    "/keyring abre",
-    "/keyring settings abre",
-    "/keyring list muestra",
-    "/keyring reset devuelve",
-  }) do
-    check(locale .. ": executable help command " .. command, help:find(command, 1, true), help)
-  end
-  G.click(KeyringMinimapButton, "RightButton")
-  local panel = Settings.categories[1].frame
-  local about
-  for _, region in ipairs({ panel:GetRegions() }) do
-    if region:GetText() and region:GetText():find("Desmarca un botón", 1, true) then about = region:GetText() end
-  end
-  check(locale .. ": settings explain unchecking", about and about:find("para dejarlo en el minimapa", 1, true), about)
-  row = rowOf("HearthtaleMinimapButton")
-  eq(locale .. ": gathered is checked", row.check:GetChecked(), true)
-  second:Hide()
-  eq(locale .. ": hidden status", rowOf("YonderMinimapButton").note:GetText(), "(oculto por su addon)")
-  second:Show()
-  row.check:SetChecked(false)
-  row.check._scripts.OnClick(row.check)
-  eq(locale .. ": unchecked button on minimap", first:GetParent(), Minimap)
-  G.chat = {}
-  G.slash("list")
-  check(locale .. ": gathered list", G.chat[1]:find("En el cajón: Yonder", 1, true), G.chat[1])
-  check(locale .. ": excluded list", G.chat[2]:find("En el minimapa: Hearthtale", 1, true), G.chat[2])
-  eq(locale .. ": singular tooltip", tooltip(), "1 botón")
-  -- The diagnostic has three typed placeholders. Internal strata tokens
-  -- remain unchanged even though the surrounding message is translated.
-  local own = getmetatable(second).__index
-  own.SetFixedFrameStrata(second, false)
-  own.SetFrameStrata(second, "MEDIUM")
-  G.slash("list")
-  check(
-    locale .. ": translated diagnostic with strata and levels",
-    G.chat[#G.chat]:find("Cubiertos por el cajón %(HIGH %d+%): Yonder %(MEDIUM %d+%)%."),
-    G.chat[#G.chat]
-  )
-  ns.lift(second)
-  ns.setLeft("YonderMinimapButton", true)
-  eq(locale .. ": empty tooltip", tooltip(), "No hay botones en el cajón.")
-  G.slash("")
-  local empty
-  for _, region in ipairs({ KeyringDrawer:GetRegions() }) do
-    if region:GetText() == "No hay botones en el cajón." then empty = region end
-  end
-  check(locale .. ": empty drawer message", empty and empty:IsShown())
-  KeyringSettings.angle = 30
-  G.slash("reset")
-  eq(locale .. ": reset action", KeyringSettings.angle, 190)
-  check(locale .. ": reset message", G.chat[#G.chat]:find("La llave vuelve a su sitio.", 1, true))
-  -- Missing Settings API: the translated advice still gives a usable command.
-  G = dofile("addon/test/game.lua")
-  G.locale = locale
-  KeyringSettings = nil
-  Settings = nil
-  ns = G.load()
-  G.login()
-  G.slash("settings")
-  check(
-    locale .. ": settings fallback",
-    G.chat[#G.chat]:find("Usa /keyring list para ver los botones.", 1, true),
-    G.chat[#G.chat]
-  )
 end
 
 io.write(

@@ -29,7 +29,7 @@ The key uses the game's minimap ring and highlight, with a painted keyring icon.
 
 One download covers Classic Era, Hardcore, Season of Discovery and World of Warcraft: Forever.
 
-Keyring speaks English, French, German and Spanish. Corrections to the German and Spanish translations are welcome on GitHub. Other clients get English.
+Keyring speaks English and French. Other clients get English.
 
 ## Support
 
