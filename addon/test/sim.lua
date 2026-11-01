@@ -412,9 +412,9 @@ eq(
 check("… which is French", GameTooltip._lines[3]:find("^Clic pour ouvrir le tiroir"), GameTooltip._lines[3])
 G.chat = {}
 G.slash("help")
-check("/keyring's help in French", G.chat[#G.chat]:find("/keyring ouvre le tiroir%."), G.chat[#G.chat])
+check("/keyring's help in French", G.chat[#G.chat]:find("/keyring ouvre ou ferme le tiroir%."), G.chat[#G.chat])
 G.slash("list")
-check("the list in French", table.concat(G.chat, "\n"):find("Dans le tiroir : Hearthtale"), table.concat(G.chat, "\n"))
+check("the list in French", table.concat(G.chat, "\n"):find("Dans le tiroir : Hearthtale"), table.concat(G.chat, "\n"))
 eq("a word no translation has: English", ns.L["Not a word Keyring says"], "Not a word Keyring says")
 check("Hearthtale gathered", h2:GetParent() == KeyringDrawer)
 
