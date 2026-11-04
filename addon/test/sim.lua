@@ -386,8 +386,12 @@ G.mouse = { other }
 local clicked, clickErr = pcall(G.fire, "GLOBAL_MOUSE_DOWN", "LeftButton")
 check("a click on a frame of secret strata and parent: no error", clicked, clickErr)
 check("and the drawer closes", not KeyringDrawer:IsShown())
+-- (and its name the game keeps secret too, as the button is let go)
+local nameOf = secretive.GetName
+function secretive:GetName() return SECRET end
 local freed, freedErr = pcall(ns.setLeft, "SecondWindMinimapButton", true)
 check("a button of secret strata let go: no error", freed, freedErr)
+secretive.GetName = nameOf
 eq("and back on the minimap", secretive:GetParent(), Minimap)
 -- (its strata was hidden, so none was restored: the drawer's stays)
 eq("its strata left as it was lifted", secretive._strata, KeyringDrawer:GetFrameStrata())

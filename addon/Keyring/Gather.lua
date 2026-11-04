@@ -149,7 +149,8 @@ local function release(b)
   if was.mouseover then b.showOnMouseover = true end
   -- (LibDBIcon places its own where its addon keeps it)
   local lib = libDBIcon()
-  local broker = b:GetName():match("^LibDBIcon10_(.+)")
+  local name = ns.plain(b:GetName())
+  local broker = name and name:match("^LibDBIcon10_(.+)")
   if broker and lib and lib.Refresh and lib:GetMinimapButton(broker) == b then lib:Refresh(broker) end
 end
 
