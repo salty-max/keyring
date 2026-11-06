@@ -2,6 +2,12 @@
 # (selene.toml: std = "wow+keyring"; the game's are the kit's wow.yml).
 name: keyring
 globals:
+  KeyringBinding:
+    any: true
+  BINDING_HEADER_KEYRING:
+    any: true
+  BINDING_NAME_KEYRING_OPEN:
+    any: true
   KeyringSettings:
     any: true
   SLASH_KEYRING1:

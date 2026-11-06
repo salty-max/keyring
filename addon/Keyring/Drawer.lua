@@ -119,6 +119,20 @@ function ns.toggle()
   end
 end
 
+-- The key binding (Bindings.xml): one key or pad button opens and closes the
+-- drawer as a click on the key does, so a controller needs no cursor on the
+-- minimap. Keyring carries none of the kit, so the three globals are set here
+-- (the kit's K.binding does the same for the other addons). The drawer is
+-- plain frames, which the game lets any addon show in combat.
+-- selene: allow(global_usage)
+BINDING_HEADER_KEYRING = "Keyring"
+-- selene: allow(global_usage)
+BINDING_NAME_KEYRING_OPEN = L["Open %s"]:format("Keyring")
+function KeyringBinding()
+  local ok, err = pcall(ns.toggle)
+  if not ok then geterrorhandler()(err) end
+end
+
 -- After a button came, went, was left out or taken back: the drawer laid out
 -- again if open, the list in the settings too.
 function ns.refresh()

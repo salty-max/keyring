@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="KEYRING_OPEN" category="BINDING_HEADER_KEYRING">
+		KeyringBinding();
+	</Binding>
+</Bindings>

@@ -15,6 +15,7 @@ ns.translate({
     ["Left on the minimap: %s."] = "Boutons laissés sur la minicarte : %s.",
     ["No buttons in the drawer."] = "Aucun bouton dans le tiroir.",
     ["No minimap buttons found yet."] = "Aucun bouton de minicarte trouvé pour l'instant.",
+    ["Open %s"] = "Ouvrir %s",
     ["The key is back in its place."] = "La clé a retrouvé sa place.",
     ["The key opens a drawer that gathers your addons' minimap buttons. Untick a button to leave it on the minimap, where its addon put it."] = "La clé ouvre un tiroir qui rassemble les boutons de minicarte de vos addons. Décochez un bouton pour le laisser sur la minicarte, là où son addon l'a placé.",
     ["The settings aren't available in this game client. /keyring list shows the buttons in chat."] = "Les réglages ne sont pas disponibles sur ce client de jeu. /keyring list affiche les boutons dans la discussion.",

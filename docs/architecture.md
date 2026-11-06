@@ -79,3 +79,7 @@ German and Spanish (deDE, esES, esMX) are held back from players since 1 Novembe
 - Lua: `bun run format:lua` (StyLua) and `bun run lint:lua` (selene; the
   game's globals in `wow.yml`: add one there when the addon calls a new game
   function). `bun run check` runs everything.
+
+## The key binding
+
+For a controller player (no keyboard for the slash command, a cursor to steer to the minimap button). `addon/Keyring/Bindings.xml` and, in `Drawer.lua`, `BINDING_HEADER_KEYRING`, `BINDING_NAME_KEYRING_OPEN` and `KeyringBinding()` (Keyring carries none of the kit, so the three globals are set by hand, declared in `keyring.yml`): one key or pad button opens and closes the drawer, as a click on the key does, with no cursor on the minimap. The binding does nothing until the player puts a key on it. The kit's `K.binding`, the file, what the game does in each game and what is not verified: `addon-kit/docs/controller.md`, "Opening by a pad button". `bun run bindings` (part of `check`) checks the file, the function and the package.

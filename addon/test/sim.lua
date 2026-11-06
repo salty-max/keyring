@@ -573,6 +573,17 @@ for _, locale in ipairs({ "esES", "esMX" }) do
   end
 end
 
+-- the key binding (Bindings.xml calls this global): it opens and closes the drawer as a click on the key does
+do
+  check("the key binding's function is there", type(KeyringBinding) == "function")
+  check("its heading and label are set", BINDING_HEADER_KEYRING == "Keyring" and BINDING_NAME_KEYRING_OPEN ~= nil)
+  local was = KeyringDrawer:IsShown()
+  KeyringBinding()
+  check("the key binding opens the drawer", KeyringDrawer:IsShown() == not was)
+  KeyringBinding()
+  check("… and a second press closes it", KeyringDrawer:IsShown() == was)
+end
+
 io.write(
   ("%s: %d checks passed%s\n"):format(
     G.FOREVER and "Forever" or "Classic Era",
@@ -580,4 +591,5 @@ io.write(
     failed > 0 and (", " .. failed .. " failed") or ""
   )
 )
+
 if failed > 0 then os.exit(1) end
